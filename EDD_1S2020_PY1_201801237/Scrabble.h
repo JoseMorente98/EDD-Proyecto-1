@@ -24,8 +24,8 @@ public:
 	*/
 	int getIndice() const;
 	string getDato() const;
-	bool esDoble() const;
-	bool esTriple() const;
+	bool getEsDoble() const;
+	bool getEsTriple() const;
 	int getPosicionX() const;
 	int getPosicionY() const;
 	Scrabble* getSiguiente() const;

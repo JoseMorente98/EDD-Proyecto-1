@@ -41,7 +41,7 @@ Jugador* Jugador::getDerecha() const
 
 void Jugador::setIdJugador(int idJugador)
 {
-	this->setIdJugador = idJugador;
+	this->idJugador = idJugador;
 }
 
 void Jugador::setNombre(string nombre)

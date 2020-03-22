@@ -1,4 +1,5 @@
 #include "Scrabble.h"
+int Scrabble::contador = 1;
 
 Scrabble::Scrabble(string dato, int x, int y, bool esDoble, bool esTriple)
 {
@@ -28,12 +29,12 @@ string Scrabble::getDato() const
 	return dato;
 }
 
-bool Scrabble::esDoble() const
+bool Scrabble::getEsDoble() const
 {
 	return esDoble;
 }
 
-bool Scrabble::esTriple() const
+bool Scrabble::getEsTriple() const
 {
 	return esTriple;
 }

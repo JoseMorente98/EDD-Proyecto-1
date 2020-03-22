@@ -18,7 +18,7 @@ public:
 	Ficha();
 	/*
 	GETTER'S
-*/
+	*/
 	string getLetra() const;
 	int getPunteo() const;
 	int getCantidad() const;
