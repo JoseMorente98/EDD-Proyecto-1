@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Diccionario.cpp" />
+    <ClCompile Include="DiccionarioLDC.cpp" />
     <ClCompile Include="EDD_1S2020_PY1_201801237.cpp" />
     <ClCompile Include="Ficha.cpp" />
     <ClCompile Include="Jugador.cpp" />
@@ -156,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Diccionario.h" />
+    <ClInclude Include="DiccionarioLDC.h" />
     <ClInclude Include="Ficha.h" />
     <ClInclude Include="Jugador.h" />
     <ClInclude Include="ScoreBoard.h" />

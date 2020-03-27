@@ -39,6 +39,9 @@
     <ClCompile Include="Scrabble.cpp">
       <Filter>Modelo</Filter>
     </ClCompile>
+    <ClCompile Include="DiccionarioLDC.cpp">
+      <Filter>Controlador</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Diccionario.h">
@@ -54,6 +57,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Scrabble.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="DiccionarioLDC.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
