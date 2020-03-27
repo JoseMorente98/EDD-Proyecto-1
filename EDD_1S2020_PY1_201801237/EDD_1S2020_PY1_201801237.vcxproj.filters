@@ -48,6 +48,9 @@
     <ClCompile Include="FichaCola.cpp">
       <Filter>Controlador</Filter>
     </ClCompile>
+    <ClCompile Include="FichaJugador.cpp">
+      <Filter>Modelo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Diccionario.h">
@@ -72,6 +75,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="FichaCola.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="FichaJugador.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

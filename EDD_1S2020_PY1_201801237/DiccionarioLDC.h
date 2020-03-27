@@ -5,10 +5,11 @@
 class DiccionarioLDC
 {
 private:
-	Diccionario* primero = NULL;
-	Diccionario* ultimo = NULL;
+	Diccionario* primero;
+	Diccionario* ultimo;
 public:
 	DiccionarioLDC();
+	bool EsVacio() const;
 	void Agregar(string palabra);
 	void GenerarGrafico();
 };

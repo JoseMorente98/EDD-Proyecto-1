@@ -2,13 +2,20 @@
 
 DiccionarioLDC::DiccionarioLDC()
 {
+	this->primero = NULL;
+	this->ultimo = NULL;
+}
+
+bool DiccionarioLDC::EsVacio() const
+{
+	return primero == NULL;
 }
 
 void DiccionarioLDC::Agregar(string palabra)
 {
 	Diccionario* diccionario;
 	diccionario = new Diccionario(palabra);
-	if (primero == NULL) {
+	if (EsVacio()) {
 		primero = diccionario;
 		primero->setSiguiente(NULL);
 		primero->setAnterior(NULL);
