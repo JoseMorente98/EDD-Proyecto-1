@@ -1,5 +1,4 @@
 #include "ScoreBoardLS.h"
-#include <fstream>
 
 void ScoreBoardLS::Agregar(int puntos, string nombre)
 {
@@ -29,6 +28,16 @@ void ScoreBoardLS::Agregar(int puntos, string nombre)
                 anterior->setSiguiente(scoreBoard);
             }
         }
+    }
+}
+
+void ScoreBoardLS::Imprimir()
+{
+    ScoreBoard* temp = primero;
+    while (temp != NULL)
+    {
+        cout << temp->getNombre() << " - " << temp->getPuntos() << "\n";
+        temp = temp->getSiguiente();
     }
 }
 
