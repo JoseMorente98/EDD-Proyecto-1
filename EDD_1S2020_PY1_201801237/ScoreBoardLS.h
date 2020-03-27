@@ -5,7 +5,10 @@
 
 class ScoreBoardLS
 {
+private:
 	ScoreBoard* primero;
+public:
+	bool EsVacio() const;
 	void Agregar(int puntos, string nombre);
 	void Imprimir();
 	void GenerarGrafico(string nombre);

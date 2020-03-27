@@ -1,10 +1,15 @@
 #include "ScoreBoardLS.h"
 
+bool ScoreBoardLS::EsVacio() const
+{
+	return primero == NULL;
+}
+
 void ScoreBoardLS::Agregar(int puntos, string nombre)
 {
     ScoreBoard* scoreBoard = new ScoreBoard(puntos, nombre);
     
-    if (primero == NULL) {
+    if (EsVacio()) {
         primero = scoreBoard;
     }
     else {
@@ -45,12 +50,13 @@ void ScoreBoardLS::GenerarGrafico(string nombre)
 {
 	ScoreBoard* aux = primero;
 	string graficoCabeza = "digraph ScoreBoard {rankdir=LR;"
-		"node[shape = box];\n";
-	ofstream ofs("ScoreBoardLS.dot", ofstream::out);
+		"node[shape = component];\n";
 	string graficoNodo;
 	string graficoMasNodo;
 	string archivoTexto = "";
 	int contador = 0;
+
+	ofstream ofs("ScoreBoardLS.dot", ofstream::out);
 
 	while (aux != NULL)
 	{

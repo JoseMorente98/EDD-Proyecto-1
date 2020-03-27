@@ -151,6 +151,7 @@
     <ClCompile Include="DiccionarioLDC.cpp" />
     <ClCompile Include="EDD_1S2020_PY1_201801237.cpp" />
     <ClCompile Include="Ficha.cpp" />
+    <ClCompile Include="FichaCola.cpp" />
     <ClCompile Include="Jugador.cpp" />
     <ClCompile Include="ScoreBoard.cpp" />
     <ClCompile Include="ScoreBoardLS.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Diccionario.h" />
     <ClInclude Include="DiccionarioLDC.h" />
     <ClInclude Include="Ficha.h" />
+    <ClInclude Include="FichaCola.h" />
     <ClInclude Include="Jugador.h" />
     <ClInclude Include="ScoreBoard.h" />
     <ClInclude Include="ScoreBoardLS.h" />

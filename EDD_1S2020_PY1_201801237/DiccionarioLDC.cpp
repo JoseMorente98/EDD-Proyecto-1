@@ -27,8 +27,8 @@ void DiccionarioLDC::GenerarGrafico()
 {
 	Diccionario* aux = primero;
 
-	string graficoCabeza = "digraph G {rankdir=LR\n"
-		"node[shape = box];\n";
+	string graficoCabeza = "digraph DiccionarioListaDobleCircular {rankdir=LR\n"
+		"node[shape = component];\n";
 	string graficoNodo;
 	string graficoMasNodo;
 	string archivoTexto = "";
