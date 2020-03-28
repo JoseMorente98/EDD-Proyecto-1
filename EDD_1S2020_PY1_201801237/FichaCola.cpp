@@ -75,7 +75,6 @@ void FichaCola::Limpiar()
 void FichaCola::GenerarGrafico()
 {
 	Ficha* temp = primero;
-
 	string graficoCabeza = "digraph FichaCola {rankdir=LR;"
 		"node[shape = component];\n";
 	string graficoNodo;

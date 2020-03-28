@@ -51,6 +51,9 @@
     <ClCompile Include="FichaJugador.cpp">
       <Filter>Modelo</Filter>
     </ClCompile>
+    <ClCompile Include="FichaJugadorLD.cpp">
+      <Filter>Controlador</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Diccionario.h">
@@ -78,6 +81,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="FichaJugador.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="FichaJugadorLD.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

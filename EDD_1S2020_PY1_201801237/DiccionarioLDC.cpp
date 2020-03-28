@@ -32,7 +32,7 @@ void DiccionarioLDC::Agregar(string palabra)
 
 void DiccionarioLDC::GenerarGrafico()
 {
-	Diccionario* aux = primero;
+	Diccionario* temp = primero;
 
 	string graficoCabeza = "digraph DiccionarioListaDobleCircular {rankdir=LR\n"
 		"node[shape = component];\n";
@@ -45,10 +45,10 @@ void DiccionarioLDC::GenerarGrafico()
 
 	do
 	{
-		graficoNodo = graficoNodo + "Nodo" + to_string(contador) + " [label = " + '"' + aux->getPalabra() + '"' + "];\n";
+		graficoNodo = graficoNodo + "Nodo" + to_string(contador) + " [label = " + '"' + temp->getPalabra() + '"' + "];\n";
 		contador++;
-		aux = aux->getSiguiente();
-	} while (aux != primero);
+		temp = temp->getSiguiente();
+	} while (temp != primero);
 
 	for (size_t i = 0; i < contador - 1; i++)
 	{

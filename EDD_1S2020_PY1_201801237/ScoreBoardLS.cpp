@@ -48,7 +48,7 @@ void ScoreBoardLS::Imprimir()
 
 void ScoreBoardLS::GenerarGrafico(string nombre)
 {
-	ScoreBoard* aux = primero;
+	ScoreBoard* temp = primero;
 	string graficoCabeza = "digraph ScoreBoard {rankdir=LR;"
 		"node[shape = component];\n";
 	string graficoNodo;
@@ -58,21 +58,21 @@ void ScoreBoardLS::GenerarGrafico(string nombre)
 
 	ofstream ofs("ScoreBoardLS.dot", ofstream::out);
 
-	while (aux != NULL)
+	while (temp != NULL)
 	{
 		if (nombre != "")
 		{
-			if (aux->getNombre() == nombre)
+			if (temp->getNombre() == nombre)
 			{
-				graficoNodo = graficoNodo + "Nodo" + to_string(contador) + " [label = " + '"' + aux->getNombre() + string("\\l") + to_string(aux->getPuntos()) + '"' + "];\n";
+				graficoNodo = graficoNodo + "Nodo" + to_string(contador) + " [label = " + '"' + temp->getNombre() + string("\\l") + to_string(temp->getPuntos()) + '"' + "];\n";
 				contador++;
 			}
 		}
 		else {
-			graficoNodo = graficoNodo + "Nodo" + to_string(contador) + " [label = " + '"' + aux->getNombre() + string("\\l") + to_string(aux->getPuntos()) + '"' + "];\n";
+			graficoNodo = graficoNodo + "Nodo" + to_string(contador) + " [label = " + '"' + temp->getNombre() + string("\\l") + to_string(temp->getPuntos()) + '"' + "];\n";
 			contador++;
 		}
-		aux = aux->getSiguiente();
+		temp = temp->getSiguiente();
 	}
 
 	for (size_t i = contador - 1; i > 0; i--)

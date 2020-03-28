@@ -153,6 +153,7 @@
     <ClCompile Include="Ficha.cpp" />
     <ClCompile Include="FichaCola.cpp" />
     <ClCompile Include="FichaJugador.cpp" />
+    <ClCompile Include="FichaJugadorLD.cpp" />
     <ClCompile Include="Jugador.cpp" />
     <ClCompile Include="ScoreBoard.cpp" />
     <ClCompile Include="ScoreBoardLS.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="Ficha.h" />
     <ClInclude Include="FichaCola.h" />
     <ClInclude Include="FichaJugador.h" />
+    <ClInclude Include="FichaJugadorLD.h" />
     <ClInclude Include="Jugador.h" />
     <ClInclude Include="ScoreBoard.h" />
     <ClInclude Include="ScoreBoardLS.h" />

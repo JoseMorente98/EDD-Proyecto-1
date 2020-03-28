@@ -11,11 +11,12 @@ protected:
     string letra;
     int punteo;
     int posicionX;
-    int posicionY;
+	int posicionY;
     FichaJugador* siguiente;
     FichaJugador* anterior;
 public:
 	FichaJugador();
+	FichaJugador(string letra, int punteo);
 	FichaJugador(string letra, int punteo, int posicionX, int posicionY);
 	/*
 		GETTER'S

@@ -4,6 +4,14 @@ FichaJugador::FichaJugador()
 {
 }
 
+FichaJugador::FichaJugador(string letra, int punteo)
+{
+	this->letra = letra;
+	this->punteo = punteo;
+	this->siguiente = NULL;
+	this->anterior = NULL;
+}
+
 FichaJugador::FichaJugador(string letra, int punteo, int posicionX, int posicionY)
 {
 	this->letra = letra;
