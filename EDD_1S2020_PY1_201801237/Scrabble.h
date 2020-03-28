@@ -8,6 +8,7 @@ protected:
 	string dato;
 	bool esDoble;
 	bool esTriple;
+	int puntos;
 	int posicionX;
 	int posicionY;
 	int indice;
@@ -17,7 +18,7 @@ protected:
 	Scrabble* arriba;
 	Scrabble* abajo;
 public:
-	Scrabble(string dato, int x, int y, bool esDoble, bool esTriple);
+	Scrabble(string dato, int puntos, int posicionX, int posicionY, bool esDoble, bool esTriple);
 	Scrabble();
 	/*
 	GETTER'S
@@ -28,6 +29,7 @@ public:
 	bool getEsTriple() const;
 	int getPosicionX() const;
 	int getPosicionY() const;
+	int getPuntos() const;
 	Scrabble* getSiguiente() const;
 	Scrabble* getAnterior() const;
 	Scrabble* getArriba() const;
@@ -41,6 +43,7 @@ public:
 	void setEsTriple(bool esTriple);
 	void setPositionX(int posicionX);
 	void setPositionY(int posicionY);
+	void setPuntos(int puntos);
 	void setSiguiente(Scrabble* siguiente);
 	void setAnterior(Scrabble* anterior);
 	void setArriba(Scrabble* arriba);

@@ -1,11 +1,12 @@
 #include "Scrabble.h"
 int Scrabble::contador = 1;
 
-Scrabble::Scrabble(string dato, int x, int y, bool esDoble, bool esTriple)
+Scrabble::Scrabble(string dato, int puntos, int posicionX, int posicionY, bool esDoble, bool esTriple)
 {
 	this->dato = dato;
-	this->posicionX = x;
-	this->posicionY = y;
+	this->posicionX = posicionY;
+	this->posicionY = posicionY;
+	this->puntos = puntos;
 	this->indice = contador++;
 	this->esDoble = esDoble;
 	this->esTriple = esTriple;
@@ -47,6 +48,11 @@ int Scrabble::getPosicionX() const
 int Scrabble::getPosicionY() const
 {
 	return posicionY;
+}
+
+int Scrabble::getPuntos() const
+{
+	return puntos;
 }
 
 Scrabble* Scrabble::getSiguiente() const
@@ -97,6 +103,11 @@ void Scrabble::setPositionX(int posicionX)
 void Scrabble::setPositionY(int posicionY)
 {
 	this->posicionY = posicionY;
+}
+
+void Scrabble::setPuntos(int puntos)
+{
+	this->puntos = puntos;
 }
 
 void Scrabble::setSiguiente(Scrabble* siguiente)

@@ -133,7 +133,7 @@ void FichaJugadorLD::GenerarGrafico()
 
 	string graficoCabeza = "digraph FichaJugadorLD {"
 		"node[shape = component];\n";
-	ofstream ofs("LD_LetterPlayer.dot", ofstream::out);
+	ofstream ofs("FichaJugadorLD.dot", ofstream::out);
 
 	while (temp != NULL)
 	{
@@ -155,6 +155,6 @@ void FichaJugadorLD::GenerarGrafico()
 	ofs << archivoTexto;
 
 	ofs.close();
-	system("dot -Tjpg -o LD_LetterPlayer.png LD_LetterPlayer.dot");
-	system("LD_LetterPlayer.png");
+	system("dot -Tjpg -o FichaJugadorLD.png FichaJugadorLD.dot");
+	system("FichaJugadorLD.png");
 }
