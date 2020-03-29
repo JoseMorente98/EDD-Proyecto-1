@@ -19,6 +19,9 @@
     <Filter Include="Controlador">
       <UniqueIdentifier>{a4b2e6c6-653a-4e2f-8eff-4ed304d7451f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scrabble">
+      <UniqueIdentifier>{3bd0c096-1828-4ef6-8f58-cc7d4be83fb6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EDD_1S2020_PY1_201801237.cpp">
@@ -54,6 +57,9 @@
     <ClCompile Include="FichaJugadorLD.cpp">
       <Filter>Controlador</Filter>
     </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Scrabble</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Diccionario.h">
@@ -84,6 +90,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="FichaJugadorLD.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

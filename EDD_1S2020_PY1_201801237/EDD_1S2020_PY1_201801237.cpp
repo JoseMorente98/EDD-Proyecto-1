@@ -2,10 +2,12 @@
 //
 
 #include <iostream>
+#include "Menu.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    Menu menu;
+    menu.MenuPrincipal();
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
