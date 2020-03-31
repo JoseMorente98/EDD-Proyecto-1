@@ -167,6 +167,7 @@
     <ClInclude Include="FichaCola.h" />
     <ClInclude Include="FichaJugador.h" />
     <ClInclude Include="FichaJugadorLD.h" />
+    <ClInclude Include="JSON.h" />
     <ClInclude Include="Jugador.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="ScoreBoard.h" />
