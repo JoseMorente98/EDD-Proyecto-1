@@ -11,6 +11,6 @@ public:
 	DiccionarioLDC();
 	bool EsVacio() const;
 	void Agregar(string palabra);
-	void GenerarGrafico();
+	void GenerarGrafico(string nombre);
 };
 

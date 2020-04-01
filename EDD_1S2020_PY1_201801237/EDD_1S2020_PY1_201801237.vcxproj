@@ -156,6 +156,7 @@
     <ClCompile Include="FichaCola.cpp" />
     <ClCompile Include="FichaJugador.cpp" />
     <ClCompile Include="FichaJugadorLD.cpp" />
+    <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Jugador.cpp" />
     <ClCompile Include="JugadorAB.cpp" />
     <ClCompile Include="LecturaJSON.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="FichaCola.h" />
     <ClInclude Include="FichaJugador.h" />
     <ClInclude Include="FichaJugadorLD.h" />
+    <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugador.h" />
     <ClInclude Include="JugadorAB.h" />
     <ClInclude Include="LecturaJSON.h" />

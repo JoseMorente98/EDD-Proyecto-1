@@ -30,32 +30,38 @@ void DiccionarioLDC::Agregar(string palabra)
 	}
 }
 
-void DiccionarioLDC::GenerarGrafico()
+void DiccionarioLDC::GenerarGrafico(string nombre)
 {
-	Diccionario* temp = primero;
+	string graficoCabeza = "digraph DiccionarioListaDobleCircular {rankdir=LR\n";
+	graficoCabeza += "node[shape = note];\n";
+	graficoCabeza += "graph[label = \"" + nombre + "\", labelloc = t, fontsize = 20];\n";
+	graficoCabeza += "node[shape = note,fontcolor = white,style = filled,color = blue4];\n";
 
-	string graficoCabeza = "digraph DiccionarioListaDobleCircular {rankdir=LR\n"
-		"node[shape = component];\n";
-	string graficoNodo;
-	string graficoMasNodo;
+	string bodyGraphiz;
 	string archivoTexto = "";
 	int contador = 0;
 
 	ofstream ofs("DiccionarioLDC.dot", ofstream::out);
 
+	Diccionario* temp = primero;
 	do
 	{
-		graficoNodo = graficoNodo + "Nodo" + to_string(contador) + " [label = " + '"' + temp->getPalabra() + '"' + "];\n";
+		bodyGraphiz += "Object" + to_string(contador) + " [label = " + '"' + temp->getPalabra() + '"' + "];\n";
 		contador++;
 		temp = temp->getSiguiente();
 	} while (temp != primero);
 
 	for (size_t i = 0; i < contador - 1; i++)
 	{
-		graficoMasNodo = graficoMasNodo + "Nodo" + to_string(i) + "->Nodo" + to_string(i + 1) + "[dir=both];\n";
+		bodyGraphiz += "\tObject" + to_string(i) + "->Object" + to_string(i + 1) + ";\n";
+		bodyGraphiz += "\tObject" + to_string(i+1) + "->Object" + to_string(i) + ";\n";
 	}
 
-	archivoTexto = graficoCabeza + graficoNodo + graficoMasNodo + "Nodo0->Nodo" + to_string(contador - 1) + "[dir=both]\n" + "}";
+	bodyGraphiz += "\tObject0->Object" + to_string(contador - 1) + ";\n";
+	bodyGraphiz += "\tObject" + to_string(contador - 1) + "->Object0;";
+
+	//GENERADOR DE GRAFICO
+	archivoTexto = graficoCabeza + bodyGraphiz + "\n}";
 	ofs << archivoTexto;
 
 	ofs.close();

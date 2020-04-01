@@ -1,0 +1,20 @@
+digraph DiccionarioListaDobleCircular {rankdir=LR
+node[shape = note];
+graph[label = "Lista Doble Circular", labelloc = t, fontsize = 20];
+node[shape = note,fontcolor = white,style = filled,color = blue4];
+Object0 [label = "Hola"];
+Object1 [label = "Suselly"];
+Object2 [label = "Chica"];
+Object3 [label = "Preciosa"];
+Object4 [label = "<3"];
+	Object0->Object1;
+	Object1->Object0;
+	Object1->Object2;
+	Object2->Object1;
+	Object2->Object3;
+	Object3->Object2;
+	Object3->Object4;
+	Object4->Object3;
+	Object0->Object4;
+	Object4->Object0;
+}

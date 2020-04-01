@@ -3,11 +3,19 @@
 
 #include <iostream>
 #include "LecturaJSON.h"
+#include "DiccionarioLDC.h"
 
 int main()
 {
-    LecturaJSON lectura;
-    lectura.CargarArchivo();
+    /*LecturaJSON lectura;
+    lectura.CargarArchivo();*/
+    DiccionarioLDC diccionario;
+    diccionario.Agregar("Hola");
+    diccionario.Agregar("Suselly");
+    diccionario.Agregar("Chica");
+    diccionario.Agregar("Preciosa");
+    diccionario.Agregar("<3");
+    diccionario.GenerarGrafico("Lista Doble Circular");
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar

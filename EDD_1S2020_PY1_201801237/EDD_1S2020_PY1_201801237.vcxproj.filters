@@ -75,6 +75,9 @@
     <ClCompile Include="JugadorAB.cpp">
       <Filter>Controlador</Filter>
     </ClCompile>
+    <ClCompile Include="Juego.cpp">
+      <Filter>Scrabble</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Diccionario.h">
@@ -126,6 +129,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="JugadorAB.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Juego.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
