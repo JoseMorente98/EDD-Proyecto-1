@@ -9,7 +9,7 @@ protected:
 		PROPIEDADES
 	*/
 	string palabra;
-	Diccionario *anterior, *siguiente;
+	Diccionario* anterior, * siguiente;
 
 public:
 	Diccionario();

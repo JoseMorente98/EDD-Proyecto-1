@@ -18,8 +18,9 @@ protected:
 	Scrabble* arriba;
 	Scrabble* abajo;
 public:
-	Scrabble(string dato, int puntos, int posicionX, int posicionY, bool esDoble, bool esTriple);
 	Scrabble();
+	Scrabble(string dato, int posicionX, int posicionY, bool esDoble, bool esTriple);
+	Scrabble(string dato, int puntos, int posicionX, int posicionY, bool esDoble, bool esTriple);
 	/*
 	GETTER'S
 	*/

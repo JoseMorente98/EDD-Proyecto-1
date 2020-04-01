@@ -12,7 +12,7 @@ protected:
 	string nombre;
 	int longitud;
 	static int contador;
-	Jugador *izquierda, *derecha;
+	Jugador* izquierda, * derecha;
 
 public:
 	Jugador();

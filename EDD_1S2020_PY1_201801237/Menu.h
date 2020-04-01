@@ -5,4 +5,3 @@ public:
 	void MenuPrincipal();
 	void MenuAbrir();
 };
-

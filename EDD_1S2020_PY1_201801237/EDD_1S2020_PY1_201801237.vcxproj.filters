@@ -14,13 +14,13 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Modelo">
-      <UniqueIdentifier>{e57cf0be-dddd-4a18-b782-3bc27e7721e5}</UniqueIdentifier>
+      <UniqueIdentifier>{96abf5b2-da38-40a9-b696-caa49f6f714c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Controlador">
-      <UniqueIdentifier>{a4b2e6c6-653a-4e2f-8eff-4ed304d7451f}</UniqueIdentifier>
+      <UniqueIdentifier>{88f92c26-c50b-4c5d-a099-9428a2300c4e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Scrabble">
-      <UniqueIdentifier>{3bd0c096-1828-4ef6-8f58-cc7d4be83fb6}</UniqueIdentifier>
+      <UniqueIdentifier>{a72bfb21-230c-463e-9288-4dca6551f801}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,10 +33,13 @@
     <ClCompile Include="Ficha.cpp">
       <Filter>Modelo</Filter>
     </ClCompile>
+    <ClCompile Include="FichaJugador.cpp">
+      <Filter>Modelo</Filter>
+    </ClCompile>
     <ClCompile Include="Jugador.cpp">
       <Filter>Modelo</Filter>
     </ClCompile>
-    <ClCompile Include="ScoreBoard.cpp">
+    <ClCompile Include="TableroPuntuacion.cpp">
       <Filter>Modelo</Filter>
     </ClCompile>
     <ClCompile Include="Scrabble.cpp">
@@ -45,20 +48,32 @@
     <ClCompile Include="DiccionarioLDC.cpp">
       <Filter>Controlador</Filter>
     </ClCompile>
-    <ClCompile Include="ScoreBoardLS.cpp">
-      <Filter>Controlador</Filter>
-    </ClCompile>
     <ClCompile Include="FichaCola.cpp">
       <Filter>Controlador</Filter>
-    </ClCompile>
-    <ClCompile Include="FichaJugador.cpp">
-      <Filter>Modelo</Filter>
     </ClCompile>
     <ClCompile Include="FichaJugadorLD.cpp">
       <Filter>Controlador</Filter>
     </ClCompile>
+    <ClCompile Include="ScrabbleMD.cpp">
+      <Filter>Controlador</Filter>
+    </ClCompile>
+    <ClCompile Include="TableroPuntuacionLS.cpp">
+      <Filter>Controlador</Filter>
+    </ClCompile>
     <ClCompile Include="Menu.cpp">
       <Filter>Scrabble</Filter>
+    </ClCompile>
+    <ClCompile Include="LecturaJSON.cpp">
+      <Filter>Scrabble</Filter>
+    </ClCompile>
+    <ClCompile Include="Apartado.cpp">
+      <Filter>Modelo</Filter>
+    </ClCompile>
+    <ClCompile Include="ApartadoLD.cpp">
+      <Filter>Controlador</Filter>
+    </ClCompile>
+    <ClCompile Include="JugadorAB.cpp">
+      <Filter>Controlador</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -68,10 +83,13 @@
     <ClInclude Include="Ficha.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="FichaJugador.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
     <ClInclude Include="Jugador.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="ScoreBoard.h">
+    <ClInclude Include="TableroPuntuacion.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Scrabble.h">
@@ -80,22 +98,34 @@
     <ClInclude Include="DiccionarioLDC.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="ScoreBoardLS.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="FichaCola.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="FichaJugador.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="FichaJugadorLD.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="ScrabbleMD.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="TableroPuntuacionLS.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
     <ClInclude Include="Menu.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="JSON.h">
+    <ClInclude Include="ModernJSON.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="LecturaJSON.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Apartado.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ApartadoLD.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="JugadorAB.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

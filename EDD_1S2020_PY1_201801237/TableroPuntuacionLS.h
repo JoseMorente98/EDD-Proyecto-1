@@ -1,12 +1,12 @@
 #pragma once
-#include "ScoreBoard.h"
+#include "TableroPuntuacion.h"
 #include <fstream>
 #include <iostream>
 
-class ScoreBoardLS
+class TableroPuntuacionLS
 {
 private:
-	ScoreBoard* primero;
+	TableroPuntuacion* primero;
 public:
 	bool EsVacio() const;
 	void Agregar(int puntos, string nombre);

@@ -2,12 +2,12 @@
 //
 
 #include <iostream>
-#include "Menu.h"
+#include "LecturaJSON.h"
 
 int main()
 {
-    Menu menu;
-    menu.MenuPrincipal();
+    LecturaJSON lectura;
+    lectura.CargarArchivo();
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar

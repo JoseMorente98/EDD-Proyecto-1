@@ -2,26 +2,26 @@
 #include <string>
 using namespace std;
 
-class ScoreBoard
+class TableroPuntuacion
 {
 protected:
 	int puntos;
 	string nombre;
-	ScoreBoard* siguiente;
+	TableroPuntuacion* siguiente;
 public:
-	ScoreBoard(int puntos, string nombre);
-	ScoreBoard();
+	TableroPuntuacion(int puntos, string nombre);
+	TableroPuntuacion();
 	/*
 		GETTER'S
 	*/
 	int getPuntos() const;
 	string getNombre() const;
-	ScoreBoard* getSiguiente() const;
+	TableroPuntuacion* getSiguiente() const;
 	/*
 		SETTER'S
 	*/
 	void setPuntos(int puntos);
 	void setNombre(string nombre);
-	void setSiguiente(ScoreBoard* siguiente);
+	void setSiguiente(TableroPuntuacion* siguiente);
 };
 

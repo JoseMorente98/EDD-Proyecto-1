@@ -3,6 +3,9 @@
 class ScrabbleMD
 {
 protected:
+    /*
+        PROPIEDADES
+    */
     Scrabble* root;
     Scrabble* ultimoDerecho;
     Scrabble* ultimoAbajo;
@@ -11,6 +14,7 @@ protected:
     string conexionX;
     string conexionY;
 
+public:
     ScrabbleMD();
     Scrabble* BuscarFila(int posicionY);
     Scrabble* BuscarColumna(int posicionX);
@@ -19,12 +23,11 @@ protected:
     Scrabble* AgregarColumna(Scrabble* scrabble, Scrabble* scrabbleColumna);
     Scrabble* CrearFila(int posicionY);
     Scrabble* CrearColumna(int posicionX);
-    void Agregar(string dato, int posicionX, int posicionY, bool esDoble, bool esTriple);
-    void GenerarGrafico();
-    void Eliminar(int x, int y);
-
     Scrabble* ValidarDobleTriple(Scrabble* scrabble);
-    void ImprimirX(Scrabble* x, int index);
-    void ImprimirY(Scrabble* y, int index);
+    void Agregar(string dato, int puntos, int posicionX, int posicionY, bool esDoble, bool esTriple);
+    void Eliminar(int posicionX, int posicionY);
+    void ImprimirX(Scrabble* posicionX, int index);
+    void ImprimirY(Scrabble* posicionY, int index);
+    void GenerarGrafico();
 };
 

@@ -30,7 +30,7 @@ Ficha* FichaCola::Eliminar()
 		Ficha* temp = primero;
 		Ficha* a = primero;
 		primero = primero->getSiguiente();
-		return temp;		
+		return temp;
 	}
 	else {
 		throw "La cola se encuentra vacía D:";

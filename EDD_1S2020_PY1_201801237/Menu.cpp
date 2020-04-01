@@ -1,5 +1,4 @@
 #include "Menu.h"
-#include "Menu.h"
 #include <iostream>
 #include <windows.h>
 

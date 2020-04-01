@@ -89,7 +89,7 @@ void FichaJugadorLD::Mostrar()
 	}
 	else {
 		cout << "La cola se encuentra vacía D:";
-	}	
+	}
 }
 
 void FichaJugadorLD::Eliminar(string letra)

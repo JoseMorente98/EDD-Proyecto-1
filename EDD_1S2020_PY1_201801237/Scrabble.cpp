@@ -1,6 +1,24 @@
 #include "Scrabble.h"
 int Scrabble::contador = 1;
 
+Scrabble::Scrabble()
+{
+}
+
+Scrabble::Scrabble(string dato, int posicionX, int posicionY, bool esDoble, bool esTriple)
+{
+	this->dato = dato;
+	this->posicionX = posicionY;
+	this->posicionY = posicionY;
+	this->indice = contador++;
+	this->esDoble = esDoble;
+	this->esTriple = esTriple;
+	this->siguiente = NULL;
+	this->anterior = NULL;
+	this->arriba = NULL;
+	this->abajo = NULL;
+}
+
 Scrabble::Scrabble(string dato, int puntos, int posicionX, int posicionY, bool esDoble, bool esTriple)
 {
 	this->dato = dato;
@@ -14,10 +32,6 @@ Scrabble::Scrabble(string dato, int puntos, int posicionX, int posicionY, bool e
 	this->anterior = NULL;
 	this->arriba = NULL;
 	this->abajo = NULL;
-}
-
-Scrabble::Scrabble()
-{
 }
 
 int Scrabble::getIndice() const
