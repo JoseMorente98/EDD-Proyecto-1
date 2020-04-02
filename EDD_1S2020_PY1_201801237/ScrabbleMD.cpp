@@ -1,9 +1,7 @@
 #include "ScrabbleMD.h"
-#include <fstream>
-#include <iostream>
 
 ScrabbleMD::ScrabbleMD() {
-	root = new Scrabble("Y/X", 0, -1, -1, false, false);
+	root = new Scrabble("Scrabble", 0, -1, -1, false, false);
 	this->ultimoAbajo = root;
 	this->ultimoDerecho = root;
 }
@@ -124,7 +122,7 @@ Scrabble* ScrabbleMD::CrearFila(int posicionY)
 		Scrabble* scrabbleTemp = root;
 		Scrabble* scrabbleTemp2 = root;
 
-		while (posicionY >= scrabbleTemp->getPosicionX() && scrabbleTemp->getAbajo() != NULL) {
+		while (posicionY >= scrabbleTemp->getPosicionY() && scrabbleTemp->getAbajo() != NULL) {
 			scrabbleTemp2 = scrabbleTemp;
 			scrabbleTemp = scrabbleTemp->getAbajo();
 		}
@@ -183,46 +181,40 @@ void ScrabbleMD::Agregar(string dato, int puntos, int posicionX, int posicionY, 
 	Scrabble* scrabbleColumna = this->BuscarColumna(posicionX);
 	Scrabble* scrabbleFila = this->BuscarFila(posicionY);
 
-	//NO EXISTE COLUMNA Y FILA
 	if (scrabbleColumna == NULL && scrabbleFila == NULL)
 	{
 		scrabbleColumna = this->CrearColumna(posicionX);
 		scrabbleFila = this->CrearFila(posicionY);
-		Scrabble* new_node = new Scrabble(dato, puntos, posicionX, posicionY, false, false);
-		new_node = this->AgregarColumna(new_node, scrabbleColumna);
-		new_node = this->AgregarFila(new_node, scrabbleFila);
-		new_node = this->ValidarDobleTriple(new_node);
+		Scrabble* scrabble = new Scrabble(dato, puntos, posicionX, posicionY, false, false);
+		scrabble = this->AgregarColumna(scrabble, scrabbleColumna);
+		scrabble = this->AgregarFila(scrabble, scrabbleFila);
+		scrabble = this->ValidarDobleTriple(scrabble);
 		return;
 	}
-	//NO EXISTE COLUMNA Y FILA SI
 	if (scrabbleColumna == NULL && scrabbleFila != NULL)
 	{
-
 		scrabbleColumna = this->CrearColumna(posicionX);
-		Scrabble* new_node = new Scrabble(dato, puntos, posicionX, posicionY, esDoble, esTriple);
-		new_node = this->AgregarColumna(new_node, scrabbleColumna);
-		new_node = this->AgregarFila(new_node, scrabbleFila);
-		new_node = this->ValidarDobleTriple(new_node);
+		Scrabble* scrabble = new Scrabble(dato, puntos, posicionX, posicionY, esDoble, esTriple);
+		scrabble = this->AgregarColumna(scrabble, scrabbleColumna);
+		scrabble = this->AgregarFila(scrabble, scrabbleFila);
+		scrabble = this->ValidarDobleTriple(scrabble);
 		return;
 	}
-	//NO EXISTE FILA Y COLUMNA SI
 	if (scrabbleColumna != NULL && scrabbleFila == NULL)
 	{
 		scrabbleFila = this->CrearFila(posicionY);
-		Scrabble* new_node = new Scrabble(dato, puntos, posicionX, posicionY, esDoble, esTriple);
-		new_node = this->AgregarColumna(new_node, scrabbleColumna);
-		new_node = this->AgregarFila(new_node, scrabbleFila);
-		new_node = this->ValidarDobleTriple(new_node);
+		Scrabble* scrabble = new Scrabble(dato, puntos, posicionX, posicionY, esDoble, esTriple);
+		scrabble = this->AgregarColumna(scrabble, scrabbleColumna);
+		scrabble = this->AgregarFila(scrabble, scrabbleFila);
+		scrabble = this->ValidarDobleTriple(scrabble);
 		return;
 	}
-	/*CASO 4: COLUMNA Y FILA EXISTEN*/
-	//EXISTEN AMBOS
 	if (scrabbleColumna != NULL && scrabbleFila != NULL)
 	{
-		Scrabble* new_node = new Scrabble(dato, puntos, posicionX, posicionY, esDoble, esTriple);
-		new_node = this->AgregarColumna(new_node, scrabbleColumna);
-		new_node = this->AgregarFila(new_node, scrabbleFila);
-		new_node = this->ValidarDobleTriple(new_node);
+		Scrabble* scrabble = new Scrabble(dato, puntos, posicionX, posicionY, esDoble, esTriple);
+		scrabble = this->AgregarColumna(scrabble, scrabbleColumna);
+		scrabble = this->AgregarFila(scrabble, scrabbleFila);
+		scrabble = this->ValidarDobleTriple(scrabble);
 		return;
 	}
 }
@@ -263,167 +255,157 @@ void ScrabbleMD::Eliminar(int posicionX, int posicionY)
 	}
 }
 
-void ScrabbleMD::ImprimirX(Scrabble* posicionX, int indice)
+void ScrabbleMD::GenerarGrafico(string nombre)
 {
-	nodoY = nodoY + "Nodox" + to_string(indice) + "->Nodoy" + to_string(posicionX->getIndice()) + "[dir=both]\n";
-	while (posicionX != NULL)
+	string archivoTexto = "";
+	string graficoCabeza = "";
+	string bodyGraphiz = "";
+	string rankX = "";
+	string rankY = "";
+	string esDobleTriple = "";
+	string objectX = "";
+	string objectY = "";
+	string conexionX = "";
+	string conexionY = "";
+	ofstream escrituraArchivo("ScrabbleMD.dot", ofstream::out);
+
+	graficoCabeza = "digraph ScrabbleMD {\n";
+	graficoCabeza += "\tnode[shape = box3d]\n";
+	graficoCabeza += "\tObjectRoot[label=\"Scrabble\", width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group = 1 ];\n";
+	graficoCabeza += "\tgraph[label=\""+nombre+"\", labelloc = t, fontsize = 20];";
+
+	//COLUMNAS
+	Scrabble* scrabbleHeaderX = root->getSiguiente();
+	conexionX = "\tObjectRoot->ObjectX" + to_string(scrabbleHeaderX->getIndice()) + ";\n";
+	rankX = "\t{ rank = same; ObjectRoot; ";
+	while (scrabbleHeaderX != NULL)
 	{
-		if (posicionX->getAbajo() != NULL)
+		if (scrabbleHeaderX->getSiguiente() != NULL)
 		{
-			nodoY = nodoY + "Nodoy" + to_string(posicionX->getIndice()) + "->Nodoy" + to_string(posicionX->getAbajo()->getIndice()) + "[dir=both];\n";
+			objectX += "\tObjectX" + to_string(scrabbleHeaderX->getIndice()) + " [label=" + '"' + "" + to_string(scrabbleHeaderX->getPosicionX()) + '"' + " width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group =" + to_string(scrabbleHeaderX->getIndice()) + "];\n";
+			conexionX += "\tObjectX" + to_string(scrabbleHeaderX->getIndice()) + "->ObjectX" + to_string(scrabbleHeaderX->getSiguiente()->getIndice()) + ";\n";
+			rankX += "\t\tObjectX" + to_string(scrabbleHeaderX->getIndice()) + "; ";
 		}
-		posicionX = posicionX->getAbajo();
-
-	}
-}
-
-void ScrabbleMD::ImprimirY(Scrabble* posicionY, int indice)
-{
-	nodoX = nodoX + "Nodoy" + to_string(indice) + "->Nodoy" + to_string(posicionY->getIndice()) + "[constraint=false, dir=both];\n";
-	while (posicionY != NULL)
-	{
-		if (posicionY->getSiguiente() != NULL)
-		{
-			nodoX = nodoX + "Nodoy" + to_string(posicionY->getIndice()) + "->Nodoy" + to_string(posicionY->getSiguiente()->getIndice()) + "[constraint=false, dir=both];\n";
+		else {
+			objectX += "\tObjectX" + to_string(scrabbleHeaderX->getIndice()) + " [label=" + '"' + "" + to_string(scrabbleHeaderX->getPosicionX()) + '"' + "width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group =" + to_string(scrabbleHeaderX->getIndice()) + "];\n";
+			rankX += "\t\tObjectX" + to_string(scrabbleHeaderX->getIndice()) + "}\n";
 
 		}
-		posicionY = posicionY->getSiguiente();
+		scrabbleHeaderX = scrabbleHeaderX->getSiguiente();
 	}
-}
 
-void ScrabbleMD::GenerarGrafico()
-{
-	ofstream ofs("ScrabbleMD.dot", ofstream::out);
-
-
-	//NUEVO CODIGO DE PRUEVA
-	string graficoCabeza = "digraph Sparce_Matrix { \n node [shape=box]\n";
-	graficoCabeza = graficoCabeza + "\tMt[ label = \"ScrabbleMD\", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];\n";
-	graficoCabeza = graficoCabeza + "\te0[ shape = point, width = 0 ];\ne1[shape = point, width = 0];\n";
-
-	Scrabble* as = root;
-
-	//CABECERAS Y;
-	Scrabble* cabezaY = root->getAbajo();
-	conexionY = "Mt->Nodoy" + to_string(cabezaY->getIndice()) + "[dir=both];\n";
-	while (cabezaY != NULL)
+	Scrabble* scrabbleX = root->getAbajo();
+	while (scrabbleX != NULL)
 	{
-		if (cabezaY->getAbajo() != NULL)
+		if (scrabbleX->getSiguiente() != NULL)
 		{
-			nodoY = nodoY + "Nodoy" + to_string(cabezaY->getIndice()) + " [label = " + '"' + "Y=" + to_string(cabezaY->getPosicionY()) + '"' + " width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];\n";
-			conexionY = conexionY + "Nodoy" + to_string(cabezaY->getIndice()) + "->Nodoy" + to_string(cabezaY->getAbajo()->getIndice()) + "[dir=both];\n";
+			Scrabble* posicionY = scrabbleX->getSiguiente();
+			objectX += "\tObjectY" + to_string(scrabbleX->getIndice()) + "->ObjectY" + to_string(posicionY->getIndice()) + "[constraint=false];\n";
+			while (posicionY != NULL)
+			{
+				if (posicionY->getSiguiente() != NULL)
+				{
+					objectX += "\tObjectY" + to_string(posicionY->getIndice()) + "->ObjectY" + to_string(posicionY->getSiguiente()->getIndice()) + "[constraint=false];\n";
+
+				}
+				posicionY = posicionY->getSiguiente();
+			}
+		}
+		scrabbleX = scrabbleX->getAbajo();
+	}
+
+	//FILAS
+	Scrabble* scrabbleHeaderY = root->getAbajo();
+	conexionY = "\tObjectRoot->ObjectY" + to_string(scrabbleHeaderY->getIndice()) + ";\n";
+	while (scrabbleHeaderY != NULL)
+	{
+		if (scrabbleHeaderY->getAbajo() != NULL)
+		{
+			objectY += "\tObjectY" + to_string(scrabbleHeaderY->getIndice()) + " [label=" + '"' + "" + to_string(scrabbleHeaderY->getPosicionY()) + '"' + " width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];\n";
+			conexionY += "\tObjectY" + to_string(scrabbleHeaderY->getIndice()) + "->ObjectY" + to_string(scrabbleHeaderY->getAbajo()->getIndice()) + ";\n";
 		}
 		else
 		{
-			nodoY = nodoY + "Nodoy" + to_string(cabezaY->getIndice()) + " [label = " + '"' + "Y=" + to_string(cabezaY->getPosicionY()) + '"' + "width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];\n";
+			objectY += "\tObjectY" + to_string(scrabbleHeaderY->getIndice()) + " [label=" + '"' + "" + to_string(scrabbleHeaderY->getPosicionY()) + '"' + "width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];\n";
 		}
-		cabezaY = cabezaY->getAbajo();
-
+		cout << scrabbleHeaderY->getPosicionY();
+		scrabbleHeaderY = scrabbleHeaderY->getAbajo();
 	}
 
-	//CABECERAS X
-	Scrabble* cabezaX = root->getSiguiente();
-	conexionX = "Mt->Nodox" + to_string(cabezaX->getIndice()) + ";\n";
-	string samex = " { rank = same; Mt; ";
-	while (cabezaX != NULL)
+	Scrabble* scrabbleY = root->getSiguiente();
+	while (scrabbleY != NULL)
 	{
-		if (cabezaX->getSiguiente() != NULL)
+		if (scrabbleY->getAbajo() != NULL)
 		{
-			nodoX = nodoX + "Nodox" + to_string(cabezaX->getIndice()) + " [label = " + '"' + "X=" + to_string(cabezaX->getPosicionX()) + '"' + " width = 1.5 style = filled, fillcolor = lightskyblue, group =" + to_string(cabezaX->getIndice()) + "];\n";
-			conexionX = conexionX + "Nodox" + to_string(cabezaX->getIndice()) + "->Nodox" + to_string(cabezaX->getSiguiente()->getIndice()) + "[dir=both];\n";
-			samex = samex + "Nodox" + to_string(cabezaX->getIndice()) + "; ";
+			Scrabble *posicionX = scrabbleY->getAbajo();
+			objectY += "\tObjectX" + to_string(scrabbleY->getIndice()) + "->ObjectY" + to_string(posicionX->getIndice()) + "\n";
+			while (posicionX != NULL)
+			{
+				if (posicionX->getAbajo() != NULL)
+				{
+					objectY += "\tObjectY" + to_string(posicionX->getIndice()) + "->ObjectY" + to_string(posicionX->getAbajo()->getIndice()) + ";\n";
+				}
+				posicionX = posicionX->getAbajo();
+			}
 		}
-		else {
-			nodoX = nodoX + "Nodox" + to_string(cabezaX->getIndice()) + " [label = " + '"' + "X=" + to_string(cabezaX->getPosicionY()) + '"' + "width = 1.5 style = filled, fillcolor = lightskyblue, group =" + to_string(cabezaX->getIndice()) + "];\n";
-			samex = samex + "Nodox" + to_string(cabezaX->getIndice()) + "}\n";
-
-		}
-		cabezaX = cabezaX->getSiguiente();
+		scrabbleY = scrabbleY->getSiguiente();
 	}
 
 	//NODOS INTERNOS
-	Scrabble* temp = root->getAbajo();
-	string nodoTemp = "";
-	string samey = "{rank= same; ";
-	string doubleTriple = "";
-	while (temp != NULL)
+	Scrabble* scrabbleTemp = root->getAbajo();
+	rankY = "\t{rank= same; ";
+	while (scrabbleTemp != NULL)
 	{
-		Scrabble* auxtemp = temp;
+		Scrabble* scrabbleAux = scrabbleTemp;
 
-		while (auxtemp != NULL)
+		while (scrabbleAux != NULL)
 		{
-
-			//INDICA SI LA CASILLA ES DOBLE O TRIPLE
-			if (auxtemp->getEsDoble())
+			if (scrabbleAux->getEsDoble())
 			{
-				doubleTriple = "\\n doble";
+				esDobleTriple = "\\n Doble";
 			}
-			else if (auxtemp->getEsTriple())
+			else if (scrabbleAux->getEsTriple())
 			{
-				doubleTriple = "\\n triple";
+				esDobleTriple = "\\n Triple";
 			}
 			else {
-				doubleTriple = "";
+				esDobleTriple = "";
 			}
 
-			Scrabble* padre = auxtemp;
+			Scrabble* scrabbleAux2 = scrabbleAux;
 			do
 			{
-				padre = padre->getArriba();
-			} while (padre->getArriba() != NULL);
+				scrabbleAux2 = scrabbleAux2->getArriba();
+			} while (scrabbleAux2->getArriba() != NULL);
 
-			nodoTemp = nodoTemp + "Nodoy" + to_string(auxtemp->getIndice()) + "[label = \"" + auxtemp->getDato() + doubleTriple + "\" width = 1.5, group = " + to_string(padre->getIndice()) + "];" + "\n";
+			if (scrabbleAux2->getIndice() != 1) {
+				bodyGraphiz += "\tObjectY" + to_string(scrabbleAux->getIndice()) + "[label=\"" + scrabbleAux->getDato() + esDobleTriple + "\" width = 1, style = filled, fillcolor = olivedrab2, group = " + to_string(scrabbleAux2->getIndice()) + "];" + "\n";
+			}
 
-			if (auxtemp->getSiguiente() != NULL)
+			if (scrabbleAux->getSiguiente() != NULL)
 			{
-				samey = samey + "Nodoy" + to_string(auxtemp->getIndice()) + ";";
+				rankY += "\t\tObjectY" + to_string(scrabbleAux->getIndice()) + ";";
 			}
 			else {
-				samey = samey + "Nodoy" + to_string(auxtemp->getIndice());
+				rankY += "\t\tObjectY" + to_string(scrabbleAux->getIndice());
 			}
-			auxtemp = auxtemp->getSiguiente();
+			scrabbleAux = scrabbleAux->getSiguiente();
 		}
-		if (temp->getAbajo() != NULL)
+		if (scrabbleTemp->getAbajo() != NULL)
 		{
-			samey = samey + "}\n {rank=same;";
+			rankY += "}\n\t{rank=same;";
 		}
 		else {
-			samey = samey + "}\n";
+			rankY += "}\n";
 		}
-		temp = temp->getAbajo();
+		scrabbleTemp = scrabbleTemp->getAbajo();
 	}
 
+	archivoTexto = graficoCabeza + objectX + objectY + conexionX + conexionY + rankX + bodyGraphiz + rankY + "}";
 
-	//obtiene los enlaces hacia abajo 
-	Scrabble* a = root->getSiguiente();
-	while (a != NULL)
-	{
-		if (a->getAbajo() != NULL)
-		{
-			ImprimirX(a->getAbajo(), a->getIndice());
-		}
-		a = a->getSiguiente();
-	}
+	escrituraArchivo << archivoTexto;
 
-	//obtiene los enlaces hacia la derecha
-	Scrabble* b = root->getAbajo();
-	while (b != NULL)
-	{
-		if (b->getSiguiente() != NULL)
-		{
-			ImprimirY(b->getSiguiente(), b->getIndice());
-		}
-		b = b->getAbajo();
-	}
-
-	string texto = graficoCabeza + nodoX + nodoY + conexionX + conexionY + samex + nodoTemp + samey + "}";
-	//std::cout << texto;
-
-	ofs << texto;
-
-	ofs.close();
-	graficoCabeza = nodoX = nodoY = conexionX = conexionY = samex = nodoTemp = samey = "";
+	escrituraArchivo.close();
 	system("dot -Tjpg -o ScrabbleMD.png ScrabbleMD.dot");
 	system("ScrabbleMD.png");
 }
-

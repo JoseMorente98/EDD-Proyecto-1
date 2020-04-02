@@ -1,5 +1,10 @@
 #include "TableroPuntuacionLS.h"
 
+TableroPuntuacionLS::TableroPuntuacionLS()
+{
+	this->primero = NULL;
+}
+
 bool TableroPuntuacionLS::EsVacio() const
 {
 	return primero == NULL;
@@ -49,27 +54,54 @@ void TableroPuntuacionLS::Imprimir()
 void TableroPuntuacionLS::GenerarGrafico(string nombre)
 {
 	TableroPuntuacion* temp = primero;
-	string graficoCabeza = "digraph TableroPuntuacion {rankdir=LR;"
-		"node[shape = component];\n";
-	string graficoNodo;
-	string graficoMasNodo;
+	string graficoCabeza = "digraph TableroPuntuacion {\n";
+	graficoCabeza += " rankdir = LR; ";
+	graficoCabeza += "node[shape = tab, fontcolor = black, style = filled, color = lightskyblue];";
+	graficoCabeza += "graph[label = \""+nombre+"\", labelloc = t, fontsize = 20];";
+	string bodyGraphiz;
 	string archivoTexto = "";
 	int contador = 0;
 
-	ofstream ofs("TableroPuntuacionLS.dot", ofstream::out);
+	ofstream escrituraArchivo("TableroPuntuacionLS.dot", ofstream::out);
 
 	while (temp != NULL)
 	{
-		if (nombre != "")
+		bodyGraphiz += "Object" + to_string(contador) + " [label = " + '"' + temp->getNombre() + string("\\lPuntos: ") + to_string(temp->getPuntos()) + '"' + "];\n";
+		contador++;
+		temp = temp->getSiguiente();
+	}
+
+	for (size_t i = contador - 1; i > 0; i--)
+	{
+		bodyGraphiz +=  "Object" + to_string(i) + "->Object" + to_string(i - 1) + ";\n";
+	}
+
+	archivoTexto = graficoCabeza + bodyGraphiz + "}";
+	escrituraArchivo << archivoTexto;
+
+	escrituraArchivo.close();
+	system("dot -Tjpg -o TableroPuntuacionLS.png TableroPuntuacionLS.dot");
+	system("TableroPuntuacionLS.png");
+}
+
+void TableroPuntuacionLS::GenerarGraficoPorJugador(string nombre)
+{
+	TableroPuntuacion* temp = primero;
+	string graficoCabeza = "digraph TableroPuntuacion {\n";
+	graficoCabeza += " rankdir = LR; ";
+	graficoCabeza += "node[shape = star, fontcolor = black, style = filled, color = gold];";
+	graficoCabeza += "graph[label = \"Lista Simple Ordenada " + nombre + "\", labelloc = t, fontsize = 20];";
+	string bodyGraphiz;
+	string archivoTexto = "";
+	int contador = 0;
+
+	ofstream escrituraArchivo("TableroPuntuacionJugadorLS.dot", ofstream::out);
+
+	while (temp != NULL)
+	{
+		if (temp->getNombre() == nombre)
 		{
-			if (temp->getNombre() == nombre)
-			{
-				graficoNodo = graficoNodo + "Nodo" + to_string(contador) + " [label = " + '"' + temp->getNombre() + string("\\l") + to_string(temp->getPuntos()) + '"' + "];\n";
-				contador++;
-			}
-		}
-		else {
-			graficoNodo = graficoNodo + "Nodo" + to_string(contador) + " [label = " + '"' + temp->getNombre() + string("\\l") + to_string(temp->getPuntos()) + '"' + "];\n";
+			bodyGraphiz += "Object" + to_string(contador) + " [label = " + '"' + to_string(temp->getPuntos()) + '"' + "];\n";
 			contador++;
 		}
 		temp = temp->getSiguiente();
@@ -77,17 +109,13 @@ void TableroPuntuacionLS::GenerarGrafico(string nombre)
 
 	for (size_t i = contador - 1; i > 0; i--)
 	{
-		graficoMasNodo = graficoMasNodo + "Nodo" + to_string(i) + "->Nodo" + to_string(i - 1) + ";\n";
+		bodyGraphiz += "Object" + to_string(i) + "->Object" + to_string(i - 1) + ";\n";
 	}
 
-	archivoTexto = graficoCabeza + graficoNodo + graficoMasNodo + "}";
-	ofs << archivoTexto;
+	archivoTexto = graficoCabeza + bodyGraphiz + "}";
+	escrituraArchivo << archivoTexto;
 
-	ofs.close();
-	system("dot -Tjpg -o TableroPuntuacionLS.png TableroPuntuacionLS.dot");
-	system("TableroPuntuacionLS.png");
-}
-
-void TableroPuntuacionLS::GenerarGrafico()
-{
+	escrituraArchivo.close();
+	system("dot -Tjpg -o TableroPuntuacionJugadorLS.png TableroPuntuacionJugadorLS.dot");
+	system("TableroPuntuacionJugadorLS.png");
 }

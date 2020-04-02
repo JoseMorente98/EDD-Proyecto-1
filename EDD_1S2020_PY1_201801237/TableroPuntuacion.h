@@ -4,7 +4,7 @@ using namespace std;
 
 class TableroPuntuacion
 {
-protected:
+private:
 	int puntos;
 	string nombre;
 	TableroPuntuacion* siguiente;

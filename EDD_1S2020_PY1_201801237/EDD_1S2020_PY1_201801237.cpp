@@ -4,18 +4,74 @@
 #include <iostream>
 #include "LecturaJSON.h"
 #include "DiccionarioLDC.h"
+#include "FichaCola.h"
+#include "FichaJugador.h"
+#include "FichaJugadorLD.h"
+#include "JugadorAB.h"
+#include "TableroPuntuacionLS.h"
+#include "Scrabble.h"
+#include "ScrabbleMD.h"
 
 int main()
 {
     /*LecturaJSON lectura;
     lectura.CargarArchivo();*/
-    DiccionarioLDC diccionario;
+    /*DiccionarioLDC diccionario;
     diccionario.Agregar("Hola");
     diccionario.Agregar("Suselly");
     diccionario.Agregar("Chica");
     diccionario.Agregar("Preciosa");
     diccionario.Agregar("<3");
-    diccionario.GenerarGrafico("Lista Doble Circular");
+    diccionario.GenerarGrafico("Lista Doble Circular");*/
+    /*FichaCola ficha;
+    ficha.Agregar("A", 1, 10);
+    ficha.Agregar("B", 1, 10);
+    ficha.Agregar("C", 1, 10);
+    ficha.Agregar("D", 1, 10);
+    ficha.Agregar("E", 1, 10);
+    ficha.Agregar("F", 1, 10);
+    ficha.Agregar("G", 1, 10);
+    ficha.Eliminar();
+    ficha.GenerarGrafico("Cola");*/
+    /*FichaJugadorLD f;
+    f.Agregar("A", 5);
+    f.Agregar("B", 5);
+    f.Agregar("C", 5);
+    f.Agregar("D", 5);
+    f.GenerarGrafico("Lista Doble");*/
+    /*JugadorAB j;
+    j.Agregar("Juan");
+    j.Agregar("Pablo");
+    j.Agregar("Pedro");
+    j.Agregar("David");
+    j.Agregar("Rafael");
+    j.Agregar("Antonieta");
+    j.Agregar("Suselly");
+    j.Agregar("Paola");
+    j.GenerarGrafico("Arbol Binario");
+    j.ReporteInOrden("In Order");
+    j.ReportePosOrden("Pos Order");
+    j.ReportePreOrden("Pre Order");*/
+    /*TableroPuntuacionLS t;
+    t.Agregar(54, "Jose");
+    t.Agregar(10, "Rafael");
+    t.Agregar(104, "Morente");
+    t.Agregar(14, "Paola");
+    t.Agregar(15, "Jose");
+    t.Imprimir();
+    t.GenerarGrafico("Lista Simple Ordenada");
+    t.GenerarGraficoPorJugador("Jose");*/
+    ScrabbleMD s;
+    s.Agregar("H", 15, 3, 4, false, false);
+    s.Agregar("O", 15, 3, 5, false, false);
+    s.Agregar("L", 15, 3, 6, false, false);
+    s.Agregar("A", 15, 3, 7, false, false);
+    s.Agregar("P", 15, 7, 4, false, false);
+    s.Agregar("R", 15, 9, 7, false, false);
+    s.Agregar("A", 15, 2, 9, false, false);
+    s.Agregar("A", 15, 6, 4, false, false);
+    s.Agregar("A", 15, 6, 1, false, false);
+    s.GenerarGrafico("Scrabble");
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar

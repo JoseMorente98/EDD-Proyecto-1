@@ -33,14 +33,14 @@ Ficha* FichaCola::Eliminar()
 		return temp;
 	}
 	else {
-		throw "La cola se encuentra vacía D:";
+		throw "La cola se encuentra vacï¿½a D:";
 	}
 }
 
 Ficha* FichaCola::Peek() const
 {
 	if (EsVacio()) {
-		throw "La cola se encuentra vacía D:";
+		throw "La cola se encuentra vacï¿½a D:";
 	}
 	return primero;
 }
@@ -56,7 +56,7 @@ void FichaCola::Imprimir()
 		}
 	}
 	else {
-		throw "La cola se encuentra vacía D:";
+		throw "La cola se encuentra vacï¿½a D:";
 	}
 }
 
@@ -72,40 +72,34 @@ void FichaCola::Limpiar()
 	ultimo = NULL;
 }
 
-void FichaCola::GenerarGrafico()
+void FichaCola::GenerarGrafico(string nombre)
 {
-	Ficha* temp = primero;
-	string graficoCabeza = "digraph FichaCola {rankdir=LR;"
-		"node[shape = component];\n";
-	string graficoNodo;
-	string graficoMasNodo;
+	string graficoCabeza = "digraph FichaCola {\n\trankdir=TB;";
+	graficoCabeza += "\tnode[shape = note, fontcolor = white, style = filled, color = darkgreen];\n";
+	graficoCabeza += "\tgraph[label = \"" +nombre+"\", labelloc = t, fontsize = 20];\n";
+	string bodyGraphiz;
 	string archivoTexto = "";
 	int contador = 0;
 
-	ofstream ofs("FichaCola.dot", ofstream::out);
+	ofstream escrituraArchivo("FichaCola.dot", ofstream::out);
 
+	Ficha* temp = primero;
 	while (temp != NULL)
 	{
-		if (temp->getLetra() == "Ñ") {
-			graficoNodo = graficoNodo + "Nodo" + to_string(contador) + " [label = " + '"' + "Letter: Ñ" + string("\\lPoints:") + to_string(temp->getPunteo()) + string("\\lCant:") + to_string(temp->getCantidad()) + '"' + "];\n";
-		}
-		else {
-			graficoNodo = graficoNodo + "Nodo" + to_string(contador) + " [label = " + '"' + "Letter:" + temp->getLetra() + string("\\lPoints:") + to_string(temp->getPunteo()) + string("\\lCant:") + to_string(temp->getCantidad()) + '"' + "];\n";
-		}
-
+		bodyGraphiz += "\tObject" + to_string(contador) + " [label = \"Caracter:" + temp->getLetra() + string("\\lPuntos:") + to_string(temp->getPunteo()) + "\"];\n";
 		temp = temp->getSiguiente();
 		contador++;
 	}
 
 	for (size_t i = contador - 1; i > 0; i--)
 	{
-		graficoMasNodo = graficoMasNodo + "Nodo" + to_string(i) + "->Nodo" + to_string(i - 1) + ";\n";
+		bodyGraphiz += "\tObject" + to_string(i) + "->Object" + to_string(i - 1) + ";\n";
 	}
 
-	archivoTexto = graficoCabeza + graficoNodo + graficoMasNodo + "}";
-	ofs << archivoTexto;
+	archivoTexto = graficoCabeza + bodyGraphiz + "}";
+	escrituraArchivo << archivoTexto;
 
-	ofs.close();
+	escrituraArchivo.close();
 	system("dot -Tjpg -o FichaCola.png FichaCola.dot");
 	system("FichaCola.png");
 }

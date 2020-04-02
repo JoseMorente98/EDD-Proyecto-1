@@ -17,6 +17,6 @@ public:
 	void Limpiar();
 	void Mostrar();
 	void Eliminar(string search);
-	void GenerarGrafico();
+	void GenerarGrafico(string nombre);
 };
 

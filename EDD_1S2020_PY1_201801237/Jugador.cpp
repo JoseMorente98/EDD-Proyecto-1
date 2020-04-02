@@ -64,11 +64,26 @@ void Jugador::setDerecha(Jugador* derecha)
 	this->derecha = derecha;
 }
 
-void Jugador::GenerarGrafica()
-{
-}
-
 string Jugador::GetCuerpo()
 {
-	return string();
+	string bodyGraphiz;
+	if (izquierda == NULL && derecha == NULL)
+	{
+		bodyGraphiz = "\tObject" + to_string(getIdJugador()) + " [ label =\""+ getNombre()  + "\"];\n";
+	}
+	else
+	{
+		bodyGraphiz = "\tObject" + to_string(getIdJugador()) + "[ label =\"" + getNombre() + "\"];\n";
+	}
+	if (izquierda != NULL)
+	{
+		bodyGraphiz += izquierda->GetCuerpo() +
+			"Object" + to_string(getIdJugador()) + "->Object" + to_string(izquierda->getIdJugador()) + "\n";
+	}
+	if (derecha != NULL)
+	{
+		bodyGraphiz += derecha->GetCuerpo() +
+			"Object" + to_string(getIdJugador()) + "->Object" + to_string(derecha->getIdJugador()) + "\n";
+	}
+	return bodyGraphiz;
 }

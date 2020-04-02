@@ -1,9 +1,14 @@
 #include "JugadorAB.h"
 #include <iostream>
 
+JugadorAB::JugadorAB()
+{
+	this->root = NULL;
+}
+
 void JugadorAB::Agregar(string nombre)
 {
-	Agregar(nombre, root);
+	root = Agregar(nombre, root);
 	this->longitud++;
 }
 
@@ -66,33 +71,37 @@ int JugadorAB::Longitud()
 	return this->longitud;
 }
 
-void JugadorAB::InOrden(Jugador* jugador)
+string JugadorAB::InOrden(Jugador* jugador, string bodyGraphiz)
 {
 	if (jugador != NULL) {
-		InOrden(jugador->getIzquierda());
-		cout << jugador->getNombre() << ", ";
-		InOrden(jugador->getDerecha());
+		bodyGraphiz = InOrden(jugador->getIzquierda(), bodyGraphiz);
+		bodyGraphiz += "Object" + to_string(jugador->getIdJugador()) + "[label = \" " + jugador->getNombre() + "\"];\n";
+		cout << jugador->getNombre() << endl;
+		bodyGraphiz = InOrden(jugador->getDerecha(), bodyGraphiz);
 	}
-
+	return bodyGraphiz;
 }
 
-void JugadorAB::PreOrden(Jugador* jugador)
+string JugadorAB::PreOrden(Jugador* jugador, string bodyGraphiz)
 {
 	if (jugador != NULL) {
-		cout << jugador->getNombre() << ", ";
-		PreOrden(jugador->getIzquierda());
-		PreOrden(jugador->getDerecha());
+		bodyGraphiz += "Object" + to_string(jugador->getIdJugador()) + "[label = \" " + jugador->getNombre() + "\"];\n";
+		cout << jugador->getNombre() << endl;
+		bodyGraphiz = PreOrden(jugador->getIzquierda(), bodyGraphiz);
+		bodyGraphiz = PreOrden(jugador->getDerecha(), bodyGraphiz);
 	}
-
+	return bodyGraphiz;
 }
 
-void JugadorAB::PosOrden(Jugador* jugador)
+string JugadorAB::PosOrden(Jugador* jugador, string bodyGraphiz)
 {
 	if (jugador != NULL) {
-		PosOrden(jugador->getIzquierda());
-		PosOrden(jugador->getDerecha());
-		cout << jugador->getNombre() << ", ";
+		bodyGraphiz = PosOrden(jugador->getIzquierda(), bodyGraphiz);
+		bodyGraphiz = PosOrden(jugador->getDerecha(), bodyGraphiz);
+		bodyGraphiz += "Object" + to_string(jugador->getIdJugador()) + "[label = \" " + jugador->getNombre() + "\"];\n";
+		cout << jugador->getNombre() << endl;
 	}
+	return bodyGraphiz;
 }
 
 Jugador* JugadorAB::GetRaiz()
@@ -102,5 +111,76 @@ Jugador* JugadorAB::GetRaiz()
 
 void JugadorAB::GenerarGrafico(string nombre)
 {
-	this->root->GenerarGrafica();
+	string archivoCabeza = "digraph ArbolBinario {\n";
+	archivoCabeza += "\trankdir=TB;\n";
+	archivoCabeza += "\tnode[shape = ellipse, fontcolor = black, style = filled, color = gainsboro];\n";
+	archivoCabeza += "\tgraph[label = \"" +nombre+"\", labelloc = t, fontsize = 20];\n";
+
+	ofstream escrituraArchivo("ArbolBinarioBusqueda.dot", ofstream::out);
+
+	string archivoTexto = "";
+
+	archivoTexto = archivoCabeza + this->root->GetCuerpo() + "}";
+
+	escrituraArchivo << archivoTexto;
+	escrituraArchivo.close();
+	system("dot -Tjpg -o ArbolBinarioBusqueda.png ArbolBinarioBusqueda.dot");
+	system("ArbolBinarioBusqueda.png");
+}
+
+void JugadorAB::ReporteInOrden(string nombre)
+{
+	string archivoCabeza = "digraph ArbolBinario {\n";
+	archivoCabeza += "\trankdir=TB;\n"; 
+	archivoCabeza += "\tnode[shape = note, fontcolor = black, style = filled, color = lightskyblue];\n";
+	archivoCabeza += "\tgraph[label = \"" + nombre + "\", labelloc = t, fontsize = 20];\n";
+
+	ofstream escrituraArchivo("InOrden.dot", ofstream::out);
+
+	string archivoTexto = "";
+
+	archivoTexto = archivoCabeza + this->InOrden(this->root, "") + "}";
+
+	escrituraArchivo << archivoTexto;
+	escrituraArchivo.close();
+	system("dot -Tjpg -o InOrden.png InOrden.dot");
+	system("InOrden.png");
+}
+
+void JugadorAB::ReportePreOrden(string nombre)
+{
+	string archivoCabeza = "digraph ArbolBinario {\n";
+	archivoCabeza += "\trankdir=TB;\n";
+	archivoCabeza += "\tnode[shape = note, fontcolor = black, style = filled, color = lavenderblush];\n";
+	archivoCabeza += "\tgraph[label = \"" + nombre + "\", labelloc = t, fontsize = 20];\n";
+
+	ofstream escrituraArchivo("PreOrden.dot", ofstream::out);
+
+	string archivoTexto = "";
+
+	archivoTexto = archivoCabeza + this->PreOrden(this->root, "") + "}";
+
+	escrituraArchivo << archivoTexto;
+	escrituraArchivo.close();
+	system("dot -Tjpg -o PreOrden.png PreOrden.dot");
+	system("PreOrden.png");
+}
+
+void JugadorAB::ReportePosOrden(string nombre)
+{
+	string archivoCabeza = "digraph ArbolBinario {\n";
+	archivoCabeza += "\trankdir=TB;\n";
+	archivoCabeza += "\tnode[shape = note, fontcolor = black, style = filled, color = navajowhite];\n";
+	archivoCabeza += "\tgraph[label = \"" + nombre + "\", labelloc = t, fontsize = 20];\n";
+
+	ofstream escrituraArchivo("PosOrden.dot", ofstream::out);
+
+	string archivoTexto = "";
+
+	archivoTexto = archivoCabeza + this->PosOrden(this->root, "") + "}";
+
+	escrituraArchivo << archivoTexto;
+	escrituraArchivo.close();
+	system("dot -Tjpg -o PosOrden.png PosOrden.dot");
+	system("PosOrden.png");
 }

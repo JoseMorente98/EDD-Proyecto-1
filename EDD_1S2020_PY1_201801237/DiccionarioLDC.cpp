@@ -33,20 +33,20 @@ void DiccionarioLDC::Agregar(string palabra)
 void DiccionarioLDC::GenerarGrafico(string nombre)
 {
 	string graficoCabeza = "digraph DiccionarioListaDobleCircular {rankdir=LR\n";
-	graficoCabeza += "node[shape = note];\n";
-	graficoCabeza += "graph[label = \"" + nombre + "\", labelloc = t, fontsize = 20];\n";
-	graficoCabeza += "node[shape = note,fontcolor = white,style = filled,color = blue4];\n";
+	graficoCabeza += "\tnode[shape = note];\n";
+	graficoCabeza += "\tgraph[label = \"" + nombre + "\", labelloc = t, fontsize = 20];\n";
+	graficoCabeza += "\tnode[shape = note,fontcolor = white,style = filled,color = blue4];\n";
 
 	string bodyGraphiz;
 	string archivoTexto = "";
 	int contador = 0;
 
-	ofstream ofs("DiccionarioLDC.dot", ofstream::out);
+	ofstream escrituraArchivo("DiccionarioLDC.dot", ofstream::out);
 
 	Diccionario* temp = primero;
 	do
 	{
-		bodyGraphiz += "Object" + to_string(contador) + " [label = " + '"' + temp->getPalabra() + '"' + "];\n";
+		bodyGraphiz += "\tObject" + to_string(contador) + " [label = " + '"' + temp->getPalabra() + '"' + "];\n";
 		contador++;
 		temp = temp->getSiguiente();
 	} while (temp != primero);
@@ -62,9 +62,9 @@ void DiccionarioLDC::GenerarGrafico(string nombre)
 
 	//GENERADOR DE GRAFICO
 	archivoTexto = graficoCabeza + bodyGraphiz + "\n}";
-	ofs << archivoTexto;
+	escrituraArchivo << archivoTexto;
 
-	ofs.close();
+	escrituraArchivo.close();
 	system("dot -Tjpg -o DiccionarioLDC.png DiccionarioLDC.dot");
 	system("DiccionarioLDC.png");
 }

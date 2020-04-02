@@ -1,0 +1,5 @@
+digraph TableroPuntuacion {
+ rankdir = LR; node[shape = star, fontcolor = black, style = filled, color = gold];graph[label = "Lista Simple Ordenada Jose", labelloc = t, fontsize = 20];Object0 [label = "15"];
+Object1 [label = "54"];
+Object1->Object0;
+}

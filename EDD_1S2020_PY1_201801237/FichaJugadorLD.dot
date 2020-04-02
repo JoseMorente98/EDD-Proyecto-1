@@ -1,0 +1,14 @@
+digraph FichaJugadorLD {
+	rankdir=LR;node[shape = note, fontcolor = white, style = filled, color = deeppink4];
+graph[label = "Lista Doble", labelloc = t, fontsize = 20];
+	Object0 [label = "A"];
+	Object1 [label = "B"];
+	Object2 [label = "C"];
+	Object3 [label = "D"];
+	Object0->Object1;
+Object1->Object0;
+	Object1->Object2;
+Object2->Object1;
+	Object2->Object3;
+Object3->Object2;
+}

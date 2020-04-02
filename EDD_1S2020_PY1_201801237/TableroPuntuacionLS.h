@@ -8,10 +8,11 @@ class TableroPuntuacionLS
 private:
 	TableroPuntuacion* primero;
 public:
+	TableroPuntuacionLS();
 	bool EsVacio() const;
 	void Agregar(int puntos, string nombre);
 	void Imprimir();
 	void GenerarGrafico(string nombre);
-	void GenerarGrafico();
+	void GenerarGraficoPorJugador(string nombre);
 };
 

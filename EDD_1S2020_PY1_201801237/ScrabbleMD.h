@@ -1,5 +1,8 @@
 #pragma once
 #include "Scrabble.h"
+#include <fstream>
+#include <iostream>
+
 class ScrabbleMD
 {
 protected:
@@ -9,10 +12,6 @@ protected:
     Scrabble* root;
     Scrabble* ultimoDerecho;
     Scrabble* ultimoAbajo;
-    string nodoX;
-    string nodoY;
-    string conexionX;
-    string conexionY;
 
 public:
     ScrabbleMD();
@@ -26,8 +25,6 @@ public:
     Scrabble* ValidarDobleTriple(Scrabble* scrabble);
     void Agregar(string dato, int puntos, int posicionX, int posicionY, bool esDoble, bool esTriple);
     void Eliminar(int posicionX, int posicionY);
-    void ImprimirX(Scrabble* posicionX, int index);
-    void ImprimirY(Scrabble* posicionY, int index);
-    void GenerarGrafico();
+    void GenerarGrafico(string nombre);
 };
 

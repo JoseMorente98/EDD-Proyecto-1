@@ -1,20 +1,27 @@
 #pragma once
 #include "Jugador.h"
+#include <fstream>
+#include <iostream>
+
 class JugadorAB
 {
-private:
-	Jugador* root = NULL;
-	int longitud;
 public:
+	Jugador* root;
+	int longitud = 0;
+public:
+	JugadorAB();
 	void Agregar(string nombre);
 	Jugador* Agregar(string nombre, Jugador *raiz);
 	Jugador* Buscar(string nombre);
 	Jugador* Buscar(string nombre, Jugador* root);
 	int Longitud();
-	void InOrden(Jugador* jugador);
-	void PreOrden(Jugador* jugador);
-	void PosOrden(Jugador* jugador);
+	string InOrden(Jugador* jugador, string bodyGraphiz);
+	string PreOrden(Jugador* jugador, string bodyGraphiz);
+	string PosOrden(Jugador* jugador, string bodyGraphiz);
 	Jugador* GetRaiz();
 	void GenerarGrafico(string nombre);
+	void ReporteInOrden(string nombre);
+	void ReportePreOrden(string nombre);
+	void ReportePosOrden(string nombre);
 };
 

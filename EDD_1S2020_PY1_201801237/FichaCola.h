@@ -16,6 +16,6 @@ public:
 	Ficha* Peek()const;
 	void Imprimir();
 	void Limpiar();
-	void GenerarGrafico();
+	void GenerarGrafico(string nombre);
 };
 

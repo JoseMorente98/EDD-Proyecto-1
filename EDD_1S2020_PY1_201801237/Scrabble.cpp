@@ -7,10 +7,10 @@ Scrabble::Scrabble()
 
 Scrabble::Scrabble(string dato, int posicionX, int posicionY, bool esDoble, bool esTriple)
 {
-	this->dato = dato;
-	this->posicionX = posicionY;
-	this->posicionY = posicionY;
 	this->indice = contador++;
+	this->dato = dato;
+	this->posicionX = posicionX;
+	this->posicionY = posicionY;
 	this->esDoble = esDoble;
 	this->esTriple = esTriple;
 	this->siguiente = NULL;
@@ -21,11 +21,11 @@ Scrabble::Scrabble(string dato, int posicionX, int posicionY, bool esDoble, bool
 
 Scrabble::Scrabble(string dato, int puntos, int posicionX, int posicionY, bool esDoble, bool esTriple)
 {
+	this->indice = contador++;
 	this->dato = dato;
-	this->posicionX = posicionY;
+	this->posicionX = posicionX;
 	this->posicionY = posicionY;
 	this->puntos = puntos;
-	this->indice = contador++;
 	this->esDoble = esDoble;
 	this->esTriple = esTriple;
 	this->siguiente = NULL;

@@ -88,7 +88,7 @@ void FichaJugadorLD::Mostrar()
 		cout << "\n";
 	}
 	else {
-		cout << "La cola se encuentra vacía D:";
+		cout << "La cola se encuentra vacï¿½a D:";
 	}
 }
 
@@ -123,38 +123,34 @@ void FichaJugadorLD::Eliminar(string letra)
 	this->longitud--;
 }
 
-void FichaJugadorLD::GenerarGrafico()
+void FichaJugadorLD::GenerarGrafico(string nombre)
 {
-	FichaJugador* temp = primero;
-	string graficoNodo;
-	string graficoMasNodo;
+	string graficoCabeza = "digraph FichaJugadorLD {\n\trankdir=LR;";
+	graficoCabeza += "node[shape = note, fontcolor = white, style = filled, color = deeppink4];\n";
+	graficoCabeza += "graph[label = \""+nombre+"\", labelloc = t, fontsize = 20];\n";
+	string bodyGraphiz;
 	string archivoTexto = "";
 	int contador = 0;
+	
+	ofstream escrituraArchivo("FichaJugadorLD.dot", ofstream::out);
 
-	string graficoCabeza = "digraph FichaJugadorLD {"
-		"node[shape = component];\n";
-	ofstream ofs("FichaJugadorLD.dot", ofstream::out);
+	FichaJugador* temp = primero;
 
 	while (temp != NULL)
 	{
-		if (temp->getLetra() == "Ñ") {
-			graficoNodo = graficoNodo + "Nodo" + to_string(contador) + " [label = " + '"' + "Ñ" + '"' + "];\n";
-		}
-		else {
-			graficoNodo = graficoNodo + "Nodo" + to_string(contador) + " [label = " + '"' + temp->getLetra() + '"' + "];\n";
-		}
+		bodyGraphiz += "\tObject" + to_string(contador) + " [label = " + '"' + temp->getLetra() + '"' + "];\n";
 		temp = temp->getSiguiente();
 		contador++;
 	}
 
 	for (size_t i = 0; i < contador - 1; i++)
 	{
-		graficoMasNodo = graficoMasNodo + "Nodo" + to_string(i) + "->Nodo" + to_string(i + 1) + ";\nNodo" + to_string(i + 1) + "->Nodo" + to_string(i) + ";\n";
+		bodyGraphiz += "\tObject" + to_string(i) + "->Object" + to_string(i + 1) + ";\nObject" + to_string(i + 1) + "->Object" + to_string(i) + ";\n";
 	}
-	archivoTexto = graficoCabeza + graficoNodo + graficoMasNodo + "}";
-	ofs << archivoTexto;
+	archivoTexto = graficoCabeza + bodyGraphiz + "}";
+	escrituraArchivo << archivoTexto;
 
-	ofs.close();
+	escrituraArchivo.close();
 	system("dot -Tjpg -o FichaJugadorLD.png FichaJugadorLD.dot");
 	system("FichaJugadorLD.png");
 }

@@ -1,0 +1,15 @@
+digraph FichaCola {
+rankdir=TB;	node[shape = note, fontcolor = white, style = filled, color = darkgreen];
+	graph[label = "Cola", labelloc = t, fontsize = 20];
+	Object0 [label = "Caracter:B\lPuntos:1"];
+	Object1 [label = "Caracter:C\lPuntos:1"];
+	Object2 [label = "Caracter:D\lPuntos:1"];
+	Object3 [label = "Caracter:E\lPuntos:1"];
+	Object4 [label = "Caracter:F\lPuntos:1"];
+	Object5 [label = "Caracter:G\lPuntos:1"];
+	Object5->Object4;
+	Object4->Object3;
+	Object3->Object2;
+	Object2->Object1;
+	Object1->Object0;
+}

@@ -33,8 +33,6 @@ public:
 	void setLongitud(int longitud);
 	void setIzquierda(Jugador* izquierda);
 	void setDerecha(Jugador* derecha);
-
-	void GenerarGrafica();
 	string GetCuerpo();
 };
 
