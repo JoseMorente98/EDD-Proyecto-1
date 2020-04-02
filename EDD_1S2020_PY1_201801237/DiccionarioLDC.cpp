@@ -1,9 +1,19 @@
 #include "DiccionarioLDC.h"
+DiccionarioLDC* DiccionarioLDC::instancia = NULL;
 
 DiccionarioLDC::DiccionarioLDC()
 {
 	this->primero = NULL;
 	this->ultimo = NULL;
+}
+
+DiccionarioLDC* DiccionarioLDC::Instancia()
+{
+	if (instancia == NULL)
+	{
+		instancia = new DiccionarioLDC();
+	}
+	return instancia;
 }
 
 bool DiccionarioLDC::EsVacio() const

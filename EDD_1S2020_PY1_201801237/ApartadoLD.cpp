@@ -2,9 +2,19 @@
 
 int ApartadoLD::longitudDoble = 0;
 int ApartadoLD::longitudTriple = 0;
+ApartadoLD* ApartadoLD::instancia = NULL;
 
 ApartadoLD::ApartadoLD()
 {
+}
+
+ApartadoLD* ApartadoLD::Instancia()
+{
+	if (instancia == NULL)
+	{
+		instancia = new ApartadoLD();
+	}
+	return instancia;
 }
 
 void ApartadoLD::AgregarDoble(int posicionX, int posicionY, bool esDoble, bool esTriple)

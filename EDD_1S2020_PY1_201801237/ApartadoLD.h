@@ -10,8 +10,10 @@ private:
 	Apartado* ultimoTriple;
 	static int longitudDoble;
 	static int longitudTriple;
+	static ApartadoLD* instancia;
 public:
 	ApartadoLD();
+	static ApartadoLD* Instancia();
 	void AgregarDoble(int posicionX, int posicionY, bool esDoble, bool esTriple);
 	void AgregarTriple(int posicionX, int posicionY, bool esDoble, bool esTriple);
 	bool ValidarDoble(int posicionX, int posicionY);

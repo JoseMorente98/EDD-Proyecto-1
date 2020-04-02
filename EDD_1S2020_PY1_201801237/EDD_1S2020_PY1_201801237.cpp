@@ -11,9 +11,12 @@
 #include "TableroPuntuacionLS.h"
 #include "Scrabble.h"
 #include "ScrabbleMD.h"
+#include "Juego.h"
 
 int main()
 {
+    Juego juego;
+    juego.MenuPrincipal();
     /*LecturaJSON lectura;
     lectura.CargarArchivo();*/
     /*DiccionarioLDC diccionario;
@@ -61,7 +64,7 @@ int main()
     t.Imprimir();
     t.GenerarGrafico("Lista Simple Ordenada");
     t.GenerarGraficoPorJugador("Jose");*/
-    ScrabbleMD s;
+    /*ScrabbleMD s;
     s.Agregar("H", 15, 3, 4, false, false);
     s.Agregar("O", 15, 3, 5, false, false);
     s.Agregar("L", 15, 3, 6, false, false);
@@ -71,7 +74,7 @@ int main()
     s.Agregar("A", 15, 2, 9, false, false);
     s.Agregar("A", 15, 6, 4, false, false);
     s.Agregar("A", 15, 6, 1, false, false);
-    s.GenerarGrafico("Scrabble");
+    s.GenerarGrafico("Scrabble");*/
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar

@@ -16,8 +16,8 @@ void Menu::MenuPrincipal()
 	cout << "201801237\n";
 	cout << "MENU PRINCIPAL\n";
 	cout << "1. Lectura de Archivo\n";
-	cout << "2. Abrir Archivo\n";
-	cout << "3. Archivo Reciente\n";
+	cout << "2. Juego\n";
+	cout << "3. Reportes\n";
 	cout << "4. Salir\n";
 	cout << "__________________________________________________\n";
 }

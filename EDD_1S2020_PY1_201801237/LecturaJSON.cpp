@@ -5,8 +5,15 @@
 #include <fstream>
 #include <windows.h>
 #include "ModernJSON.h"
+#include "DiccionarioLDC.h"
+#include "ApartadoLD.h"
 using json = nlohmann::json;
 using namespace std;
+/*
+    SINGLETON
+*/
+DiccionarioLDC* controladorDiccionario = DiccionarioLDC::Instancia();
+ApartadoLD* controladorApartado = ApartadoLD::Instancia();
 
 void LecturaJSON::CargarArchivo()
 {
@@ -15,8 +22,8 @@ void LecturaJSON::CargarArchivo()
     {
         Menu menu;
         menu.MenuAbrir();
-
         string pathArchivo = "";
+        std::cout << ">> ";
         cin >> pathArchivo;
 
         ifstream fileStream;
@@ -34,23 +41,21 @@ void LecturaJSON::CargarArchivo()
             cout << body.at("dimension") << "\n";
 
             //DICCIONARIO
-            for (int x = 0; x < body.at("diccionario").size(); x++)
+            for (size_t i = 0; i < body.at("diccionario").size(); i++)
             {
-                cout << "DICCIONARIO: " << body.at("diccionario")[x].at("palabra") << "\n";
+                controladorDiccionario->Agregar(body.at("diccionario")[i].at("palabra"));
             }
-
+            
             //DOBLES
-            for (int fileStream = 0; fileStream < body.at("casillas").at("dobles").size(); fileStream++)
+            for (size_t i = 0; i < body.at("casillas").at("dobles").size(); i++)
             {
-                cout << "X" << body.at("casillas").at("dobles")[fileStream].at("x") << "\n";
-                cout << "Y" << body.at("casillas").at("dobles")[fileStream].at("y") << "\n";
+                controladorApartado->AgregarDoble(body.at("casillas").at("dobles")[i].at("x"), body.at("casillas").at("dobles")[i].at("y"), true, false);
             }
 
             //TRIPLE
-            for (int fileStream = 0; fileStream < body.at("casillas").at("triples").size(); fileStream++)
+            for (size_t i = 0; i < body.at("casillas").at("triples").size(); i++)
             {
-                cout << "X" << body.at("casillas").at("triples")[fileStream].at("x") << "\n";
-                cout << "Y" << body.at("casillas").at("triples")[fileStream].at("y") << "\n";
+                controladorApartado->AgregarTriple(body.at("casillas").at("dobles")[i].at("x"), body.at("casillas").at("dobles")[i].at("y"), false, true);
             }
 
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
@@ -59,7 +64,8 @@ void LecturaJSON::CargarArchivo()
             cout << "__________________________________________________\n";
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
             system("pause");
-            break;
+            system("cls");
+            estado = false;
         }
         else {
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
@@ -69,6 +75,7 @@ void LecturaJSON::CargarArchivo()
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
             system("pause");
             system("cls");
+            estado = true;
         }
     } while (estado);
 }
