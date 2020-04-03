@@ -1,9 +1,19 @@
 #include "JugadorAB.h"
 #include <iostream>
+JugadorAB* JugadorAB::instancia = NULL;
 
 JugadorAB::JugadorAB()
 {
 	this->root = NULL;
+}
+
+JugadorAB* JugadorAB::Instancia()
+{
+	if (instancia == NULL)
+	{
+		instancia = new JugadorAB();
+	}
+	return instancia;
 }
 
 void JugadorAB::Agregar(string nombre)

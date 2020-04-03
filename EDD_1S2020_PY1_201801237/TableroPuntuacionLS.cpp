@@ -1,8 +1,18 @@
 #include "TableroPuntuacionLS.h"
+TableroPuntuacionLS* TableroPuntuacionLS::instancia = NULL;
 
 TableroPuntuacionLS::TableroPuntuacionLS()
 {
 	this->primero = NULL;
+}
+
+TableroPuntuacionLS* TableroPuntuacionLS::Instancia()
+{
+	if (instancia == NULL)
+	{
+		instancia = new TableroPuntuacionLS();
+	}
+	return instancia;
 }
 
 bool TableroPuntuacionLS::EsVacio() const
@@ -39,6 +49,19 @@ void TableroPuntuacionLS::Agregar(int puntos, string nombre)
 			}
 		}
 	}
+}
+
+TableroPuntuacion *TableroPuntuacionLS::Buscar(string nombre)
+{
+	TableroPuntuacion* temp = primero;
+	while (temp != NULL)
+	{
+		if (temp->getNombre() == nombre) {
+			return temp;
+		}
+		temp = temp->getSiguiente();
+	}
+	return NULL;
 }
 
 void TableroPuntuacionLS::Imprimir()

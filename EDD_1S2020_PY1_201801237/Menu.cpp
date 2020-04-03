@@ -1,11 +1,13 @@
-#include "Menu.h"
+﻿#include "Menu.h"
 #include <iostream>
 #include <windows.h>
+#include "Jugador.h"
 
 using namespace std;
 
 void Menu::MenuPrincipal()
 {
+	system("cls");
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
 	cout << "__________________________________________________\n";
 	cout << "UNIVERSIDAD DE SAN CARLOS DE GUATEMALA\n";
@@ -14,6 +16,7 @@ void Menu::MenuPrincipal()
 	cout << "PRACTICA NO. 1\n";
 	cout << "JOSE RAFAEL MORENTE GONZALEZ\n";
 	cout << "201801237\n";
+	cout << "__________________________________________________\n";
 	cout << "MENU PRINCIPAL\n";
 	cout << "1. Lectura de Archivo\n";
 	cout << "2. Juego\n";
@@ -22,11 +25,71 @@ void Menu::MenuPrincipal()
 	cout << "__________________________________________________\n";
 }
 
+void Menu::MenuJuego()
+{
+	system("cls");
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
+	cout << "__________________________________________________\n";
+	cout << "CONFIGURACION DE JUEGO\n";
+	cout << "__________________________________________________\n";
+	cout << "1. Jugadores\n";
+	cout << "2. Iniciar Juego\n";
+	cout << "3. Menu Principal\n";
+	cout << "__________________________________________________\n";
+}
+
+void Menu::MenuJugador()
+{
+	system("cls");
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
+	cout << "__________________________________________________\n";
+	cout << "JUGADOR\n";
+	cout << "__________________________________________________\n";
+}
+
+void Menu::MenuReporte()
+{
+	system("cls");
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
+	cout << "__________________________________________________\n";
+	cout << "REPORTES\n";
+	cout << "__________________________________________________\n";
+	cout << "1. Lista Doble Circular - Diccionario\n";
+	cout << "2. Cola - Fichas\n";
+	cout << "3. Arbol Binario - Jugadores\n";
+	cout << "4. Arbol Binario Pre Orden - Jugadores\n";
+	cout << "5. Arbol Binario In Orden - Jugadores\n";
+	cout << "6. Arbol Binario Post Orden - Jugadores\n";
+	cout << "7. Lista Simple Ordenada- Tablero de Puntos\n";
+	cout << "8. Lista Simple Ordenada- Puntos Por Jugador\n";
+	cout << "9. Menu Principal\n";
+	cout << "__________________________________________________\n";
+}
+
+
 void Menu::MenuAbrir()
 {
+	system("cls");
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
 	cout << "__________________________________________________\n";
 	cout << "CARGAR ARCHIVO\n";
+	cout << "__________________________________________________\n";
 	cout << "Ingrese la ruta del archivo: \n";
+}
+
+void Menu::MenuNuevoJuego()
+{
+	system("cls");
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
+	cout << "__________________________________________________\n";
+	cout << "SCRABBLE\n";
+	cout << "__________________________________________________\n";
+}
+void Menu::MenuJugadorPunteo(std::string nombre, int punteo, int color)
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+	cout << "__________________________________________________\n";
+	cout << "Jugador: " << nombre << "\n";
+	cout << "Puntos: " << punteo << "\n";
 	cout << "__________________________________________________\n";
 }

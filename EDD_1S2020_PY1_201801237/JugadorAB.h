@@ -8,8 +8,10 @@ class JugadorAB
 public:
 	Jugador* root;
 	int longitud = 0;
+	static JugadorAB* instancia;
 public:
 	JugadorAB();
+	static JugadorAB* Instancia();
 	void Agregar(string nombre);
 	Jugador* Agregar(string nombre, Jugador *raiz);
 	Jugador* Buscar(string nombre);

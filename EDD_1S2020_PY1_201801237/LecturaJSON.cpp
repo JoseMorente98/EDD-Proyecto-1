@@ -38,7 +38,7 @@ void LecturaJSON::CargarArchivo()
             fileStream >> body;
 
             //TABLERO DIMENSION
-            cout << body.at("dimension") << "\n";
+            controladorApartado->setMatriz(body.at("dimension"));
 
             //DICCIONARIO
             for (size_t i = 0; i < body.at("diccionario").size(); i++)
@@ -59,9 +59,7 @@ void LecturaJSON::CargarArchivo()
             }
 
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
-            cout << "__________________________________________________\n";
             cout << "Archivo encontrado :D\n";
-            cout << "__________________________________________________\n";
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
             system("pause");
             system("cls");
@@ -69,9 +67,7 @@ void LecturaJSON::CargarArchivo()
         }
         else {
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-            cout << "__________________________________________________\n";
             cout << "Archivo no encontrado D:\n";
-            cout << "__________________________________________________\n";
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
             system("pause");
             system("cls");

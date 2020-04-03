@@ -2,10 +2,15 @@
 
 int ApartadoLD::longitudDoble = 0;
 int ApartadoLD::longitudTriple = 0;
+int ApartadoLD::matriz = 0;
 ApartadoLD* ApartadoLD::instancia = NULL;
 
 ApartadoLD::ApartadoLD()
 {
+	this->primero = NULL;
+	this->ultimo = NULL;
+	this->primeroTriple = NULL;
+	this->ultimoTriple = NULL;
 }
 
 ApartadoLD* ApartadoLD::Instancia()
@@ -81,4 +86,14 @@ bool ApartadoLD::ValidarTriple(int posicionX, int posicionY)
 		temp = temp->getSiguiente();
 	}
 	return false;
+}
+
+int ApartadoLD::getMatriz() const
+{
+	return matriz;
+}
+
+void ApartadoLD::setMatriz(int matriz)
+{
+	this->matriz = matriz;
 }

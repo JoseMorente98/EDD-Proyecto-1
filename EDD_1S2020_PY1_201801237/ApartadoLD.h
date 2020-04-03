@@ -8,6 +8,7 @@ private:
 	Apartado* ultimo;
 	Apartado* primeroTriple;
 	Apartado* ultimoTriple;
+	static int matriz;
 	static int longitudDoble;
 	static int longitudTriple;
 	static ApartadoLD* instancia;
@@ -18,5 +19,8 @@ public:
 	void AgregarTriple(int posicionX, int posicionY, bool esDoble, bool esTriple);
 	bool ValidarDoble(int posicionX, int posicionY);
 	bool ValidarTriple(int posicionX, int posicionY);
+	int getMatriz() const;
+	void setMatriz(int matriz);
+
 };
 

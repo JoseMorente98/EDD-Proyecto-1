@@ -15,6 +15,7 @@
 
 int main()
 {
+    setlocale(LC_ALL, "es_ES");
     Juego juego;
     juego.MenuPrincipal();
     /*LecturaJSON lectura;

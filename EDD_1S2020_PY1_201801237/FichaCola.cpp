@@ -1,8 +1,18 @@
 #include "FichaCola.h"
+FichaCola* FichaCola::instancia = NULL;
 
 FichaCola::FichaCola() {
 	this->primero = NULL;
 	this->ultimo = NULL;
+}
+
+FichaCola* FichaCola::Instancia()
+{
+	if (instancia == NULL)
+	{
+		instancia = new FichaCola();
+	}
+	return instancia;
 }
 
 bool FichaCola::EsVacio() const
