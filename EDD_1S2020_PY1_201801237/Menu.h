@@ -9,5 +9,4 @@ public:
 	void MenuReporte();
 	void MenuAbrir();
 	void MenuNuevoJuego();
-	void MenuJugadorPunteo(string nombre, int punteo, int color);
 };

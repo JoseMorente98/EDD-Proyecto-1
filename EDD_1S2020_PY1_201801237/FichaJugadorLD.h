@@ -6,7 +6,7 @@ class FichaJugadorLD
 private:
 	FichaJugador* primero;
 	FichaJugador* ultimo;
-	static int longitud;
+	int longitud;
 public:
 	FichaJugadorLD();
 	bool EsVacio() const;
@@ -18,5 +18,9 @@ public:
 	void Mostrar();
 	void Eliminar(string search);
 	void GenerarGrafico(string nombre);
+	FichaJugador* getPrimero() const;
+	FichaJugador* getUltimo() const;
+	void setUltimo(FichaJugador* ultimo);
+	void setPrimero(FichaJugador* primero);
 };
 

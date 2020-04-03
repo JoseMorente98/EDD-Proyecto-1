@@ -50,7 +50,7 @@ Ficha* FichaCola::Eliminar()
 Ficha* FichaCola::Peek() const
 {
 	if (EsVacio()) {
-		throw "La cola se encuentra vac�a D:";
+		throw "La cola se encuentra vacía D:";
 	}
 	return primero;
 }
@@ -66,7 +66,7 @@ void FichaCola::Imprimir()
 		}
 	}
 	else {
-		throw "La cola se encuentra vac�a D:";
+		throw "La cola se encuentra vacía D:";
 	}
 }
 

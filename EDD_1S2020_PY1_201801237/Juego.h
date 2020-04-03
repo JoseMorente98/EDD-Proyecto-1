@@ -10,5 +10,6 @@ public:
 	void ReportePunteoPorJugador();
 	void CargaMasiva();
 	void IniciarJuego();
+	int ValidacionMatriz(int color);
 };
 

@@ -8,7 +8,7 @@ private:
 	Apartado* ultimo;
 	Apartado* primeroTriple;
 	Apartado* ultimoTriple;
-	static int matriz;
+	int matriz = 0;
 	static int longitudDoble;
 	static int longitudTriple;
 	static ApartadoLD* instancia;

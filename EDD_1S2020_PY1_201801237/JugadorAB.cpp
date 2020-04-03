@@ -81,12 +81,20 @@ int JugadorAB::Longitud()
 	return this->longitud;
 }
 
+void JugadorAB::InOrden(Jugador* jugador)
+{
+	if (jugador != NULL) {
+		InOrden(jugador->getIzquierda());
+		cout << "Jugador: " << jugador->getNombre() << endl;
+		InOrden(jugador->getDerecha());
+	}
+}
+
 string JugadorAB::InOrden(Jugador* jugador, string bodyGraphiz)
 {
 	if (jugador != NULL) {
 		bodyGraphiz = InOrden(jugador->getIzquierda(), bodyGraphiz);
 		bodyGraphiz += "Object" + to_string(jugador->getIdJugador()) + "[label = \" " + jugador->getNombre() + "\"];\n";
-		cout << jugador->getNombre() << endl;
 		bodyGraphiz = InOrden(jugador->getDerecha(), bodyGraphiz);
 	}
 	return bodyGraphiz;
@@ -96,7 +104,6 @@ string JugadorAB::PreOrden(Jugador* jugador, string bodyGraphiz)
 {
 	if (jugador != NULL) {
 		bodyGraphiz += "Object" + to_string(jugador->getIdJugador()) + "[label = \" " + jugador->getNombre() + "\"];\n";
-		cout << jugador->getNombre() << endl;
 		bodyGraphiz = PreOrden(jugador->getIzquierda(), bodyGraphiz);
 		bodyGraphiz = PreOrden(jugador->getDerecha(), bodyGraphiz);
 	}
@@ -109,7 +116,6 @@ string JugadorAB::PosOrden(Jugador* jugador, string bodyGraphiz)
 		bodyGraphiz = PosOrden(jugador->getIzquierda(), bodyGraphiz);
 		bodyGraphiz = PosOrden(jugador->getDerecha(), bodyGraphiz);
 		bodyGraphiz += "Object" + to_string(jugador->getIdJugador()) + "[label = \" " + jugador->getNombre() + "\"];\n";
-		cout << jugador->getNombre() << endl;
 	}
 	return bodyGraphiz;
 }
@@ -117,6 +123,16 @@ string JugadorAB::PosOrden(Jugador* jugador, string bodyGraphiz)
 Jugador* JugadorAB::GetRaiz()
 {
 	return this->root;
+}
+
+void JugadorAB::ImprimirInOrden()
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
+	cout << "__________________________________________________\n";
+	cout << "LISTA DE JUGADORES\n";
+	cout << "__________________________________________________\n";
+	this->InOrden(root);
+	cout << "__________________________________________________\n";
 }
 
 void JugadorAB::GenerarGrafico(string nombre)

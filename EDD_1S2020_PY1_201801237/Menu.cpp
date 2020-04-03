@@ -4,10 +4,17 @@
 #include "Jugador.h"
 
 using namespace std;
-
+// 6 y 13
 void Menu::MenuPrincipal()
 {
 	system("cls");
+	/*for (size_t i = 0; i < 15; i++)
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), i);
+
+		cout << "__________________________________________________\n";
+
+	}*/
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
 	cout << "__________________________________________________\n";
 	cout << "UNIVERSIDAD DE SAN CARLOS DE GUATEMALA\n";
@@ -66,7 +73,6 @@ void Menu::MenuReporte()
 	cout << "__________________________________________________\n";
 }
 
-
 void Menu::MenuAbrir()
 {
 	system("cls");
@@ -83,13 +89,5 @@ void Menu::MenuNuevoJuego()
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
 	cout << "__________________________________________________\n";
 	cout << "SCRABBLE\n";
-	cout << "__________________________________________________\n";
-}
-void Menu::MenuJugadorPunteo(std::string nombre, int punteo, int color)
-{
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
-	cout << "__________________________________________________\n";
-	cout << "Jugador: " << nombre << "\n";
-	cout << "Puntos: " << punteo << "\n";
 	cout << "__________________________________________________\n";
 }

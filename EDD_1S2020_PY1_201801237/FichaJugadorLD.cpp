@@ -1,10 +1,10 @@
 #include "FichaJugadorLD.h"
 #include <iostream>
 #include <fstream>
-
-int FichaJugadorLD::longitud = 0;
+#include <windows.h>
 
 FichaJugadorLD::FichaJugadorLD() {
+	this->longitud = 0;
 	this->primero = NULL;
 	this->ultimo = NULL;
 }
@@ -79,6 +79,7 @@ void FichaJugadorLD::Limpiar()
 void FichaJugadorLD::Mostrar()
 {
 	if (!EsVacio()) {
+		cout << "Mis Fichas: ";
 		FichaJugador* temp = primero;
 		while (temp != NULL)
 		{
@@ -88,7 +89,7 @@ void FichaJugadorLD::Mostrar()
 		cout << "\n";
 	}
 	else {
-		cout << "La cola se encuentra vac�a D:";
+		cout << "La cola se encuentra vacía D:";
 	}
 }
 
@@ -153,4 +154,24 @@ void FichaJugadorLD::GenerarGrafico(string nombre)
 	escrituraArchivo.close();
 	system("dot -Tjpg -o FichaJugadorLD.png FichaJugadorLD.dot");
 	system("FichaJugadorLD.png");
+}
+
+FichaJugador* FichaJugadorLD::getPrimero() const
+{
+	return primero;
+}
+
+FichaJugador* FichaJugadorLD::getUltimo() const
+{
+	return ultimo;
+}
+
+void FichaJugadorLD::setUltimo(FichaJugador* ultimo)
+{
+	this->ultimo = ultimo;
+}
+
+void FichaJugadorLD::setPrimero(FichaJugador* primero)
+{
+	this->primero = primero;
 }

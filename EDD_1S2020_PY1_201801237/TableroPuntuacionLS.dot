@@ -1,10 +1,8 @@
 digraph TableroPuntuacion {
- rankdir = LR; node[shape = tab, fontcolor = black, style = filled, color = lightskyblue];graph[label = "Lista Simple Ordenada", labelloc = t, fontsize = 20];Object0 [label = "Rafael\lPuntos: 10"];
-Object1 [label = "Paola\lPuntos: 14"];
-Object2 [label = "Jose\lPuntos: 15"];
-Object3 [label = "Jose\lPuntos: 54"];
-Object4 [label = "Morente\lPuntos: 104"];
-Object4->Object3;
+ rankdir = LR; node[shape = tab, fontcolor = black, style = filled, color = lightskyblue];graph[label = "Lista Simple Ordenada", labelloc = t, fontsize = 20];Object0 [label = "Lux\lPuntos: 0"];
+Object1 [label = "Paola\lPuntos: 0"];
+Object2 [label = "Lux\lPuntos: 0"];
+Object3 [label = "Paola\lPuntos: 4"];
 Object3->Object2;
 Object2->Object1;
 Object1->Object0;

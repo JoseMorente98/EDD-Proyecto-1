@@ -1,60 +1,31 @@
 digraph ScrabbleMD {
 	node[shape = box3d]
 	ObjectRoot[label="Scrabble", width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group = 1 ];
-	graph[label="Scrabble", labelloc = t, fontsize = 20];	ObjectX15 [label="2" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group =15];
-	ObjectX2 [label="3" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group =2];
-	ObjectX18 [label="6" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group =18];
-	ObjectX11 [label="7" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group =11];
-	ObjectX13 [label="9"width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group =13];
-	ObjectY20->ObjectY21[constraint=false];
+	graph[label="Scrabble", labelloc = t, fontsize = 20];	ObjectX2 [label="1"width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group =2];
 	ObjectY3->ObjectY4[constraint=false];
-	ObjectY4->ObjectY19[constraint=false];
-	ObjectY19->ObjectY12[constraint=false];
 	ObjectY5->ObjectY6[constraint=false];
 	ObjectY7->ObjectY8[constraint=false];
 	ObjectY9->ObjectY10[constraint=false];
-	ObjectY10->ObjectY14[constraint=false];
-	ObjectY16->ObjectY17[constraint=false];
-	ObjectY20 [label="1" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
-	ObjectY3 [label="4" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
-	ObjectY5 [label="5" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
-	ObjectY7 [label="6" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
-	ObjectY9 [label="7" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
-	ObjectY16 [label="9"width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
-	ObjectX15->ObjectY17
+	ObjectY3 [label="1" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
+	ObjectY5 [label="2" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
+	ObjectY7 [label="3" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
+	ObjectY9 [label="4"width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
 	ObjectX2->ObjectY4
 	ObjectY4->ObjectY6;
 	ObjectY6->ObjectY8;
 	ObjectY8->ObjectY10;
-	ObjectX18->ObjectY21
-	ObjectY21->ObjectY19;
-	ObjectX11->ObjectY12
-	ObjectX13->ObjectY14
-	ObjectRoot->ObjectX15;
-	ObjectX15->ObjectX2;
-	ObjectX2->ObjectX18;
-	ObjectX18->ObjectX11;
-	ObjectX11->ObjectX13;
-	ObjectRoot->ObjectY20;
-	ObjectY20->ObjectY3;
+	ObjectRoot->ObjectX2;
+	ObjectRoot->ObjectY3;
 	ObjectY3->ObjectY5;
 	ObjectY5->ObjectY7;
 	ObjectY7->ObjectY9;
-	ObjectY9->ObjectY16;
-	{ rank = same; ObjectRoot; 		ObjectX15; 		ObjectX2; 		ObjectX18; 		ObjectX11; 		ObjectX13}
-	ObjectY21[label="A" width = 1, style = filled, fillcolor = olivedrab2, group = 18];
+	{ rank = same; ObjectRoot; 		ObjectX2}
 	ObjectY4[label="H" width = 1, style = filled, fillcolor = olivedrab2, group = 2];
-	ObjectY19[label="A" width = 1, style = filled, fillcolor = olivedrab2, group = 18];
-	ObjectY12[label="P" width = 1, style = filled, fillcolor = olivedrab2, group = 11];
 	ObjectY6[label="O" width = 1, style = filled, fillcolor = olivedrab2, group = 2];
 	ObjectY8[label="L" width = 1, style = filled, fillcolor = olivedrab2, group = 2];
 	ObjectY10[label="A" width = 1, style = filled, fillcolor = olivedrab2, group = 2];
-	ObjectY14[label="R" width = 1, style = filled, fillcolor = olivedrab2, group = 13];
-	ObjectY17[label="A" width = 1, style = filled, fillcolor = olivedrab2, group = 15];
-	{rank= same; 		ObjectY20;		ObjectY21}
-	{rank=same;		ObjectY3;		ObjectY4;		ObjectY19;		ObjectY12}
+	{rank= same; 		ObjectY3;		ObjectY4}
 	{rank=same;		ObjectY5;		ObjectY6}
 	{rank=same;		ObjectY7;		ObjectY8}
-	{rank=same;		ObjectY9;		ObjectY10;		ObjectY14}
-	{rank=same;		ObjectY16;		ObjectY17}
+	{rank=same;		ObjectY9;		ObjectY10}
 }

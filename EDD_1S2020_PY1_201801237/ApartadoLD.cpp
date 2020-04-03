@@ -2,7 +2,6 @@
 
 int ApartadoLD::longitudDoble = 0;
 int ApartadoLD::longitudTriple = 0;
-int ApartadoLD::matriz = 0;
 ApartadoLD* ApartadoLD::instancia = NULL;
 
 ApartadoLD::ApartadoLD()

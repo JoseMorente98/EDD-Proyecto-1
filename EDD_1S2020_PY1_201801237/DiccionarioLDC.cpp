@@ -40,6 +40,21 @@ void DiccionarioLDC::Agregar(string palabra)
 	}
 }
 
+Diccionario* DiccionarioLDC::Buscar(string palabra)
+{
+	Diccionario* diccionario = ultimo->getSiguiente();
+	do {
+		if (diccionario->getPalabra() == palabra)
+		{
+			return diccionario;
+		}
+		else {
+			diccionario = diccionario->getSiguiente();
+		}
+	} while (diccionario != primero);
+	return NULL;
+}
+
 void DiccionarioLDC::GenerarGrafico(string nombre)
 {
 	string graficoCabeza = "digraph DiccionarioListaDobleCircular {rankdir=LR\n";
