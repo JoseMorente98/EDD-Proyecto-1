@@ -13,6 +13,7 @@ public:
 	static DiccionarioLDC* Instancia();
 	bool EsVacio() const;
 	void Agregar(string palabra);
+	void Limpiar();
 	Diccionario* Buscar(string palabra);
 	void GenerarGrafico(string nombre);
 };

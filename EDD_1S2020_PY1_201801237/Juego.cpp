@@ -84,12 +84,15 @@ void Juego::MenuPrincipal()
 				this->MenuPrincipal();
 				break;
 			case 2:
-				this->MenuJuego();
+				this->MenuConfiguracion();
 				break;
 			case 3:
-				this->MenuReporte();
+				this->MenuJuego();
 				break;
 			case 4:
+				this->MenuReporte();
+				break;
+			case 5:
 				estado = false;
 				break;
 			default:
@@ -109,6 +112,19 @@ void Juego::MenuPrincipal()
 			textoEntrada;
 		}
 	} while (estado);
+}
+
+void Juego::MenuConfiguracion()
+{
+	menu.MenuConfiguracion();
+	cout << "Tamaño de Tablero:" << controladorConfiguracion->getMatriz() << " \n";
+	cout << "Puntos Dobles\n";
+	controladorConfiguracion->MostrarDoble();
+	cout << "Puntos Triples\n";
+	controladorConfiguracion->MostrarTriple();
+	cout << "__________________________________________________\n";
+	system("pause");
+	this->MenuPrincipal();
 }
 
 void Juego::MenuJuego()
@@ -474,11 +490,18 @@ void Juego::IniciarJuego() {
 					if (jugador1->getNombre() != jugador->getNombre()) {
 						jugador2 = jugador;						
 						//CARGA DE FICHAS
-						for (size_t i = 0; i < 7; i++)
+						/*for (size_t i = 0; i < 7; i++)
 						{
 							Ficha* ficha = controladorFicha->Eliminar();
 							fichaJugador2.Agregar(ficha->getLetra(), ficha->getPunteo());
-						}
+						}*/
+						fichaJugador2.Agregar("M", 1);
+						fichaJugador2.Agregar("U", 1);
+						fichaJugador2.Agregar("N", 1);
+						fichaJugador2.Agregar("D", 1);
+						fichaJugador2.Agregar("O", 1);
+						fichaJugador2.Agregar("E", 1);
+						fichaJugador2.Agregar("W", 1);
 						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13);
 						cout << "__________________________________________________\n";
 						cout << "Jugador: " << jugador2->getNombre() << ", Puntos: " << ptsJugador2 << "\n";
@@ -613,7 +636,9 @@ void Juego::IniciarJuego() {
 										}
 										fichaJugador1.Eliminar(ficha->getLetra());
 										fichaJugadorAux1.Agregar(ficha->getLetra(), ficha->getPunteo(), posicionX, posicionY);
-										scrabble.Agregar(ficha->getLetra(), ficha->getPunteo(), posicionX, posicionY, false, false);
+										bool doble = controladorConfiguracion->ValidarDoble(posicionX, posicionY);
+										bool triple = controladorConfiguracion->ValidarTriple(posicionX, posicionY);
+										scrabble.Agregar(ficha->getLetra(), ficha->getPunteo(), posicionX, posicionY, doble, triple);
 										scrabble.GenerarGrafico("Scrabble");
 									}
 								}
@@ -623,6 +648,7 @@ void Juego::IniciarJuego() {
 							cout << "¿Que deseas hacer?\n";
 							cout << "1. Continuar\n";
 							cout << "2. Validar\n";
+							cout << "3. Regresar\n";
 							cout << "__________________________________________________\n";
 							bool estadoContinuar = true;
 							string opcionContinuar;
@@ -650,7 +676,7 @@ void Juego::IniciarJuego() {
 												FichaJugador *fichaTemp = fichaJugadorAux1.getPrimero();
 												scrabble.Eliminar(fichaTemp->getPosicionX(), fichaTemp->getPosicionY());
 												fichaJugador1.Agregar(fichaTemp->getLetra(), ficha->getPunteo());
-												fichaJugador1.setPrimero(fichaJugador1.getPrimero()->getSiguiente());
+												fichaJugadorAux1.setPrimero(fichaJugadorAux1.getPrimero()->getSiguiente());
 											}
 										}
 										else {
@@ -673,6 +699,11 @@ void Juego::IniciarJuego() {
 										cout << "Jugador: " << jugador1->getNombre() << ", Puntos: " << ptsJugador1 << "\n";
 										cout << "__________________________________________________\n";
 										system("pause");
+										break;
+									case 3:
+										estadoLetra = false;
+										estadoContinuar = false;
+										estadoRonda1 = true;
 										break;
 									default:
 										SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
@@ -867,6 +898,7 @@ void Juego::IniciarJuego() {
 			bool estadoRonda1 = true;
 			string opcionRonda;
 			do {
+#pragma region JUGADOR 2
 				system("cls");
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
 				cout << "__________________________________________________\n";
@@ -889,10 +921,10 @@ void Juego::IniciarJuego() {
 					bool estadoFinalizar = true;
 					string opcionFinalizar;
 
-					switch(opcionRonda2)
+					switch (opcionRonda2)
 					{
 					case 1:
-#pragma region COLOCAR FICHAS JUGADOR 1
+#pragma region COLOCAR FICHAS JUGADOR 2
 						//JUGAR
 						while (estadoLetra) {
 							system("cls");
@@ -938,7 +970,7 @@ void Juego::IniciarJuego() {
 								if (posicionX >= longitud || posicionY >= longitud) {
 									SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
 									cout << "La posición excede el limite D:\n";
-									SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);	
+									SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
 									system("pause");
 								}
 								else {
@@ -959,7 +991,9 @@ void Juego::IniciarJuego() {
 										}
 										fichaJugador2.Eliminar(ficha->getLetra());
 										fichaJugadorAux2.Agregar(ficha->getLetra(), ficha->getPunteo(), posicionX, posicionY);
-										scrabble.Agregar(ficha->getLetra(), ficha->getPunteo(), posicionX, posicionY, false, false);
+										bool doble = controladorConfiguracion->ValidarDoble(posicionX, posicionY);
+										bool triple = controladorConfiguracion->ValidarTriple(posicionX, posicionY);
+										scrabble.Agregar(ficha->getLetra(), ficha->getPunteo(), posicionX, posicionY, doble, triple);
 										scrabble.GenerarGrafico("Scrabble");
 									}
 								}
@@ -969,6 +1003,7 @@ void Juego::IniciarJuego() {
 							cout << "¿Que deseas hacer?\n";
 							cout << "1. Continuar\n";
 							cout << "2. Validar\n";
+							cout << "3. Regresar\n";
 							cout << "__________________________________________________\n";
 							bool estadoContinuar = true;
 							string opcionContinuar;
@@ -993,10 +1028,10 @@ void Juego::IniciarJuego() {
 											//REVERTIR MOVIMIENTO DE PARTIDA
 											while (fichaJugadorAux2.getPrimero() != NULL)
 											{
-												FichaJugador *fichaTemp = fichaJugadorAux2.getPrimero();
+												FichaJugador* fichaTemp = fichaJugadorAux2.getPrimero();
 												scrabble.Eliminar(fichaTemp->getPosicionX(), fichaTemp->getPosicionY());
 												fichaJugador2.Agregar(fichaTemp->getLetra(), ficha->getPunteo());
-												fichaJugador2.setPrimero(fichaJugador2.getPrimero()->getSiguiente());
+												fichaJugadorAux2.setPrimero(fichaJugadorAux2.getPrimero()->getSiguiente());
 											}
 										}
 										else {
@@ -1020,6 +1055,11 @@ void Juego::IniciarJuego() {
 										cout << "__________________________________________________\n";
 										system("pause");
 										break;
+									case 3:
+										estadoLetra = false;
+										estadoContinuar = false;
+										estadoRonda1 = true;
+										break;
 									default:
 										SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
 										cout << "Usted ha ingresado una opción incorrecta.\n";
@@ -1028,7 +1068,8 @@ void Juego::IniciarJuego() {
 										opcionContinuar;
 										break;
 									}
-								} else {
+								}
+								else {
 									SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
 									cout << "Solamente puede ingresar digitos.\n";
 									SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
@@ -1040,7 +1081,7 @@ void Juego::IniciarJuego() {
 #pragma endregion
 						break;
 					case 2:
-#pragma region INTERCAMBIO DE PALABRAS JUGADOR 1
+#pragma region INTERCAMBIO DE PALABRAS JUGADOR 2
 						while (estadoIntercambio) {
 							system("cls");
 							SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
@@ -1135,7 +1176,7 @@ void Juego::IniciarJuego() {
 #pragma endregion
 						break;
 					case 4:
-#pragma region FINALIZAR JUEGO JUGADOR 1
+#pragma region FINALIZAR JUEGO JUGADOR 2
 						cout << "__________________________________________________\n";
 						cout << "¿Seguro quieres salir de la partida?\n";
 						cout << "1. Si\n";
@@ -1151,13 +1192,13 @@ void Juego::IniciarJuego() {
 								switch (opcionFinalizar2) {
 								case 1:
 									//GUARDAR PUNTEOS
-									controladorTablero->Agregar(ptsJugador1, jugador1->getNombre());
+									controladorTablero->Agregar(ptsJugador2, jugador2->getNombre());
 									controladorTablero->Agregar(ptsJugador2, jugador2->getNombre());
 									SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 									cout << "__________________________________________________\n";
 									cout << "JUEGO TERMINADO\n";
 									cout << "__________________________________________________\n";
-									cout << "Jugador: " << jugador1->getNombre() << ", Puntos: " << ptsJugador1 << "\n";
+									cout << "Jugador: " << jugador2->getNombre() << ", Puntos: " << ptsJugador2 << "\n";
 									cout << "Jugador: " << jugador2->getNombre() << ", Puntos: " << ptsJugador2 << "\n";
 									cout << "__________________________________________________\n";
 									estadoFinalizar = false;
@@ -1205,74 +1246,117 @@ void Juego::IniciarJuego() {
 					opcionRonda;
 				}
 			} while (estadoRonda1);
-			ronda = 2;
+			ronda = 1;
+#pragma endregion
 		}
 	} while (estadoPartida);
 }
 
 int Juego::ValidacionMatriz(int color) {
 	int puntosObtenidos = 0;
-	int posicionX = posicionInicialX;
-	int posicionY = posicionInicialY;
+	int posicionX = 0;
+	int posicionY = 0;
 	int posicionTempX = posicionInicialX;
 	int posicionTempY = posicionInicialY;
+	int longitudLetra;
 	string palabraDiccionario;
 	Scrabble* scrabbleTemp = NULL;
+	std::cout << "Coordenada X\n";
+	std::cout << ">> ";
+	std::cin >> posicionX;
+	std::cout << "Coordenada Y\n";
+	std::cout << ">> ";
+	std::cin >> posicionY;
+	std::cout << "Longitud Palabra\n";
+	std::cout << ">> ";
+	std::cin >> longitudLetra;
 
-	//HORIZONTAL
-	if (posicionInicialX == posicionFinalX) {
-		int longitud = posicionFinalY - posicionInicialY;
-		for (size_t i = 0; i < longitud + 1; i++)
-		{
-			scrabbleTemp = scrabble.BuscarLetra(posicionX, posicionY);
-			if (scrabbleTemp != NULL)
+	if (longitudLetra == 1) {
+		//HORIZONTAL
+		if (posicionInicialX == posicionFinalX) {
+			int longitud = longitudLetra - 1;
+			for (size_t i = 0; i < longitud + 1; i++)
 			{
-				palabraDiccionario +=  scrabbleTemp->getDato();
-				if (scrabbleTemp->getEsTriple() == true) {
-					puntosObtenidos = puntosObtenidos + (3 * scrabbleTemp->getPuntos());
-				}
-				else if (scrabbleTemp->getEsDoble() == true) {
-					puntosObtenidos = puntosObtenidos + (2 * scrabbleTemp->getPuntos());
+				scrabbleTemp = scrabble.BuscarLetra(posicionX, posicionY);
+				if (scrabbleTemp != NULL)
+				{
+					palabraDiccionario += scrabbleTemp->getDato();
+					if (scrabbleTemp->getEsTriple() == true) {
+						puntosObtenidos = puntosObtenidos + (3 * scrabbleTemp->getPuntos());
+					}
+					else if (scrabbleTemp->getEsDoble() == true) {
+						puntosObtenidos = puntosObtenidos + (2 * scrabbleTemp->getPuntos());
+					}
+					else {
+						puntosObtenidos = puntosObtenidos + scrabbleTemp->getPuntos();
+					}
+					posicionY++;
 				}
 				else {
-					puntosObtenidos = puntosObtenidos + scrabbleTemp->getPuntos();
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+					cout << "No existe elemento en: (" << posicionX << "," << posicionY << ")\n";
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+					return 0;
 				}
-				posicionY++;
-			}
-			else {
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-				cout << "No existe elemento en: (" << posicionX << "," << posicionY << ")\n";
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
-				return 0;
 			}
 		}
 	}
-
-	//VERTICAL
-	if (posicionInicialY == posicionFinalY) {
-		int longitud = posicionFinalX - posicionInicialX;
-		for (size_t i = 0; i < longitud +1; i++)
-		{
-			scrabbleTemp = scrabble.BuscarLetra(posicionX, posicionY);
-			if (scrabbleTemp != NULL)
+	else {
+		//HORIZONTAL
+		if (posicionInicialX == posicionFinalX) {
+			int longitud = longitudLetra - 1;
+			for (size_t i = 0; i < longitud + 1; i++)
 			{
-				palabraDiccionario += scrabbleTemp->getDato();
-				if (scrabbleTemp->getEsTriple() == true) {
-					puntosObtenidos = puntosObtenidos + (3 * scrabbleTemp->getPuntos());
-				}
-				else if (scrabbleTemp->getEsDoble() == true) {
-					puntosObtenidos = puntosObtenidos + (2 * scrabbleTemp->getPuntos());
+				scrabbleTemp = scrabble.BuscarLetra(posicionX, posicionY);
+				if (scrabbleTemp != NULL)
+				{
+					palabraDiccionario += scrabbleTemp->getDato();
+					if (scrabbleTemp->getEsTriple() == true) {
+						puntosObtenidos = puntosObtenidos + (3 * scrabbleTemp->getPuntos());
+					}
+					else if (scrabbleTemp->getEsDoble() == true) {
+						puntosObtenidos = puntosObtenidos + (2 * scrabbleTemp->getPuntos());
+					}
+					else {
+						puntosObtenidos = puntosObtenidos + scrabbleTemp->getPuntos();
+					}
+					posicionY++;
 				}
 				else {
-					puntosObtenidos = puntosObtenidos + scrabbleTemp->getPuntos();
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+					cout << "No existe elemento en: (" << posicionX << "," << posicionY << ")\n";
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+					return 0;
 				}
-				posicionX++;
 			}
-			else {
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-				cout << "No existe elemento en: (" << posicionX << "," << posicionY << "\n";
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
-				return 0;
+		}
+
+		//VERTICAL
+		if (posicionInicialY == posicionFinalY) {
+			int longitud = longitudLetra - 1;
+			for (size_t i = 0; i < longitud + 1; i++)
+			{
+				scrabbleTemp = scrabble.BuscarLetra(posicionX, posicionY);
+				if (scrabbleTemp != NULL)
+				{
+					palabraDiccionario += scrabbleTemp->getDato();
+					if (scrabbleTemp->getEsTriple() == true) {
+						puntosObtenidos = puntosObtenidos + (3 * scrabbleTemp->getPuntos());
+					}
+					else if (scrabbleTemp->getEsDoble() == true) {
+						puntosObtenidos = puntosObtenidos + (2 * scrabbleTemp->getPuntos());
+					}
+					else {
+						puntosObtenidos = puntosObtenidos + scrabbleTemp->getPuntos();
+					}
+					posicionX++;
+				}
+				else {
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+					cout << "No existe elemento en: (" << posicionX << "," << posicionY << "\n";
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+					return 0;
+				}
 			}
 		}
 	}

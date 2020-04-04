@@ -1,7 +1,4 @@
 #include "FichaJugadorLD.h"
-#include <iostream>
-#include <fstream>
-#include <windows.h>
 
 FichaJugadorLD::FichaJugadorLD() {
 	this->longitud = 0;

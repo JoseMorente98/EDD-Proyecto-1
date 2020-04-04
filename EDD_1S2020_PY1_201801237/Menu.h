@@ -9,4 +9,5 @@ public:
 	void MenuReporte();
 	void MenuAbrir();
 	void MenuNuevoJuego();
+	void MenuConfiguracion();
 };

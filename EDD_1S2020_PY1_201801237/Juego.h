@@ -4,6 +4,7 @@ class Juego
 public:
 	Juego();
 	void MenuPrincipal();
+	void MenuConfiguracion();
 	void MenuJuego();
 	void MenuJugador();
 	void MenuReporte();

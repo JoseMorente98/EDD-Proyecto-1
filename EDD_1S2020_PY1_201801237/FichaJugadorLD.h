@@ -1,6 +1,9 @@
 #pragma once
-#include <string>
 #include "FichaJugador.h"
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <windows.h>
 class FichaJugadorLD
 {
 private:

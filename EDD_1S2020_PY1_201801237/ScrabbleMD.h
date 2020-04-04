@@ -22,7 +22,6 @@ public:
     Scrabble* AgregarColumna(Scrabble* scrabble, Scrabble* scrabbleColumna);
     Scrabble* CrearFila(int posicionY);
     Scrabble* CrearColumna(int posicionX);
-    Scrabble* ValidarDobleTriple(Scrabble* scrabble);
     void Agregar(string dato, int puntos, int posicionX, int posicionY, bool esDoble, bool esTriple);
     void Eliminar(int posicionX, int posicionY);
     void GenerarGrafico(string nombre);

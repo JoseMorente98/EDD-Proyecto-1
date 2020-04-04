@@ -6,6 +6,10 @@ Apartado::Apartado()
 
 Apartado::Apartado(int posicionX, int posicionY, bool esDoble, bool esTriple)
 {
+	this->posicionX = posicionX;
+	this->posicionY = posicionY;
+	this->esDoble = esDoble;
+	this->esTriple = esTriple;
 }
 
 int Apartado::getPosicionX() const

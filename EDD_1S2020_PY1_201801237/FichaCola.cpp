@@ -42,15 +42,12 @@ Ficha* FichaCola::Eliminar()
 		primero = primero->getSiguiente();
 		return temp;
 	}
-	else {
-		throw "La cola se encuentra vac�a D:";
-	}
 }
 
 Ficha* FichaCola::Peek() const
 {
 	if (EsVacio()) {
-		throw "La cola se encuentra vacía D:";
+		return NULL;
 	}
 	return primero;
 }
@@ -64,9 +61,6 @@ void FichaCola::Imprimir()
 			cout << temp->getLetra() << ",";
 			temp = temp->getSiguiente();
 		}
-	}
-	else {
-		throw "La cola se encuentra vacía D:";
 	}
 }
 

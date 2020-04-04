@@ -40,6 +40,11 @@ void DiccionarioLDC::Agregar(string palabra)
 	}
 }
 
+void DiccionarioLDC::Limpiar()
+{
+	this->primero = NULL;
+}
+
 Diccionario* DiccionarioLDC::Buscar(string palabra)
 {
 	Diccionario* diccionario = ultimo->getSiguiente();

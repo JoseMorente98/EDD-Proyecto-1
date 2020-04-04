@@ -19,6 +19,10 @@ public:
 	void AgregarTriple(int posicionX, int posicionY, bool esDoble, bool esTriple);
 	bool ValidarDoble(int posicionX, int posicionY);
 	bool ValidarTriple(int posicionX, int posicionY);
+	void LimpiarDoble();
+	void LimpiarTriple();
+	void MostrarDoble();
+	void MostrarTriple();
 	int getMatriz() const;
 	void setMatriz(int matriz);
 

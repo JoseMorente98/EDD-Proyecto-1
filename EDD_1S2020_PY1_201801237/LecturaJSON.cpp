@@ -17,6 +17,11 @@ ApartadoLD* controladorApartado = ApartadoLD::Instancia();
 
 void LecturaJSON::CargarArchivo()
 {
+    //LIMPIAR VARIABLES
+    controladorDiccionario->Limpiar();
+    controladorApartado->LimpiarDoble();
+    controladorApartado->LimpiarTriple();
+
     bool estado = true;
     do
     {
@@ -55,7 +60,7 @@ void LecturaJSON::CargarArchivo()
             //TRIPLE
             for (size_t i = 0; i < body.at("casillas").at("triples").size(); i++)
             {
-                controladorApartado->AgregarTriple(body.at("casillas").at("dobles")[i].at("x"), body.at("casillas").at("dobles")[i].at("y"), false, true);
+                controladorApartado->AgregarTriple(body.at("casillas").at("triples")[i].at("x"), body.at("casillas").at("triples")[i].at("y"), false, true);
             }
 
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
@@ -67,7 +72,7 @@ void LecturaJSON::CargarArchivo()
         }
         else {
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-            cout << "Archivo no encontrado D:\n";
+            cout << "Archivo no localizado D:\n";
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
             system("pause");
             system("cls");

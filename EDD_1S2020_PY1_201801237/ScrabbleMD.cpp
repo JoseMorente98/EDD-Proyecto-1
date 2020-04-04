@@ -171,11 +171,6 @@ Scrabble* ScrabbleMD::CrearColumna(int posicionX)
 	return scrabble;
 }
 
-Scrabble* ScrabbleMD::ValidarDobleTriple(Scrabble* scrabble)
-{
-	return nullptr;
-}
-
 void ScrabbleMD::Agregar(string dato, int puntos, int posicionX, int posicionY, bool esDoble, bool esTriple)
 {
 	Scrabble* scrabbleColumna = this->BuscarColumna(posicionX);
@@ -185,10 +180,9 @@ void ScrabbleMD::Agregar(string dato, int puntos, int posicionX, int posicionY, 
 	{
 		scrabbleColumna = this->CrearColumna(posicionX);
 		scrabbleFila = this->CrearFila(posicionY);
-		Scrabble* scrabble = new Scrabble(dato, puntos, posicionX, posicionY, false, false);
+		Scrabble* scrabble = new Scrabble(dato, puntos, posicionX, posicionY, esDoble, esTriple);
 		scrabble = this->AgregarColumna(scrabble, scrabbleColumna);
 		scrabble = this->AgregarFila(scrabble, scrabbleFila);
-		scrabble = this->ValidarDobleTriple(scrabble);
 		return;
 	}
 	if (scrabbleColumna == NULL && scrabbleFila != NULL)
@@ -197,7 +191,6 @@ void ScrabbleMD::Agregar(string dato, int puntos, int posicionX, int posicionY, 
 		Scrabble* scrabble = new Scrabble(dato, puntos, posicionX, posicionY, esDoble, esTriple);
 		scrabble = this->AgregarColumna(scrabble, scrabbleColumna);
 		scrabble = this->AgregarFila(scrabble, scrabbleFila);
-		scrabble = this->ValidarDobleTriple(scrabble);
 		return;
 	}
 	if (scrabbleColumna != NULL && scrabbleFila == NULL)
@@ -206,7 +199,6 @@ void ScrabbleMD::Agregar(string dato, int puntos, int posicionX, int posicionY, 
 		Scrabble* scrabble = new Scrabble(dato, puntos, posicionX, posicionY, esDoble, esTriple);
 		scrabble = this->AgregarColumna(scrabble, scrabbleColumna);
 		scrabble = this->AgregarFila(scrabble, scrabbleFila);
-		scrabble = this->ValidarDobleTriple(scrabble);
 		return;
 	}
 	if (scrabbleColumna != NULL && scrabbleFila != NULL)
@@ -214,7 +206,6 @@ void ScrabbleMD::Agregar(string dato, int puntos, int posicionX, int posicionY, 
 		Scrabble* scrabble = new Scrabble(dato, puntos, posicionX, posicionY, esDoble, esTriple);
 		scrabble = this->AgregarColumna(scrabble, scrabbleColumna);
 		scrabble = this->AgregarFila(scrabble, scrabbleFila);
-		scrabble = this->ValidarDobleTriple(scrabble);
 		return;
 	}
 }
@@ -360,16 +351,14 @@ void ScrabbleMD::GenerarGrafico(string nombre)
 
 		while (scrabbleAux != NULL)
 		{
-			if (scrabbleAux->getEsDoble())
+			if (scrabbleAux->getEsTriple())
 			{
-				esDobleTriple = "\\n Doble";
-			}
-			else if (scrabbleAux->getEsTriple())
+				esDobleTriple = "gold";
+			} else if (scrabbleAux->getEsDoble())
 			{
-				esDobleTriple = "\\n Triple";
-			}
-			else {
-				esDobleTriple = "";
+				esDobleTriple = "gray";
+			} else {
+				esDobleTriple = "olivedrab2";
 			}
 
 			Scrabble* scrabbleAux2 = scrabbleAux;
@@ -379,7 +368,7 @@ void ScrabbleMD::GenerarGrafico(string nombre)
 			} while (scrabbleAux2->getArriba() != NULL);
 
 			if (scrabbleAux2->getIndice() != 1) {
-				bodyGraphiz += "\tObjectY" + to_string(scrabbleAux->getIndice()) + "[label=\"" + scrabbleAux->getDato() + esDobleTriple + "\" width = 1, style = filled, fillcolor = olivedrab2, group = " + to_string(scrabbleAux2->getIndice()) + "];" + "\n";
+				bodyGraphiz += "\tObjectY" + to_string(scrabbleAux->getIndice()) + "[label=\"" + scrabbleAux->getDato() + "\" width = 1, style = filled, fillcolor = "+esDobleTriple+", group = " + to_string(scrabbleAux2->getIndice()) + "];" + "\n";
 			}
 
 			if (scrabbleAux->getSiguiente() != NULL)

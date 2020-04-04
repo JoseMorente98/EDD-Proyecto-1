@@ -1,31 +1,52 @@
 digraph ScrabbleMD {
 	node[shape = box3d]
 	ObjectRoot[label="Scrabble", width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group = 1 ];
-	graph[label="Scrabble", labelloc = t, fontsize = 20];	ObjectX2 [label="1"width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group =2];
+	graph[label="Scrabble", labelloc = t, fontsize = 20];	ObjectX2 [label="3" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group =2];
+	ObjectX5 [label="4" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group =5];
+	ObjectX7 [label="5" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group =7];
+	ObjectX9 [label="6"width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group =9];
+	ObjectY11->ObjectY12[constraint=false];
+	ObjectY13->ObjectY14[constraint=false];
+	ObjectY15->ObjectY16[constraint=false];
+	ObjectY17->ObjectY18[constraint=false];
 	ObjectY3->ObjectY4[constraint=false];
-	ObjectY5->ObjectY6[constraint=false];
-	ObjectY7->ObjectY8[constraint=false];
-	ObjectY9->ObjectY10[constraint=false];
-	ObjectY3 [label="1" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
-	ObjectY5 [label="2" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
-	ObjectY7 [label="3" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
-	ObjectY9 [label="4"width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
+	ObjectY4->ObjectY6[constraint=false];
+	ObjectY6->ObjectY8[constraint=false];
+	ObjectY8->ObjectY10[constraint=false];
+	ObjectY11 [label="2" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
+	ObjectY13 [label="3" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
+	ObjectY15 [label="4" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
+	ObjectY17 [label="5" width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
+	ObjectY3 [label="6"width=1,  fontcolor=white, fillcolor=darkgreen, style=filled,  group=1  ];
 	ObjectX2->ObjectY4
-	ObjectY4->ObjectY6;
-	ObjectY6->ObjectY8;
-	ObjectY8->ObjectY10;
+	ObjectX5->ObjectY12
+	ObjectY12->ObjectY14;
+	ObjectY14->ObjectY16;
+	ObjectY16->ObjectY18;
+	ObjectY18->ObjectY6;
+	ObjectX7->ObjectY8
+	ObjectX9->ObjectY10
 	ObjectRoot->ObjectX2;
-	ObjectRoot->ObjectY3;
-	ObjectY3->ObjectY5;
-	ObjectY5->ObjectY7;
-	ObjectY7->ObjectY9;
-	{ rank = same; ObjectRoot; 		ObjectX2}
-	ObjectY4[label="H" width = 1, style = filled, fillcolor = olivedrab2, group = 2];
-	ObjectY6[label="O" width = 1, style = filled, fillcolor = olivedrab2, group = 2];
-	ObjectY8[label="L" width = 1, style = filled, fillcolor = olivedrab2, group = 2];
-	ObjectY10[label="A" width = 1, style = filled, fillcolor = olivedrab2, group = 2];
-	{rank= same; 		ObjectY3;		ObjectY4}
-	{rank=same;		ObjectY5;		ObjectY6}
-	{rank=same;		ObjectY7;		ObjectY8}
-	{rank=same;		ObjectY9;		ObjectY10}
+	ObjectX2->ObjectX5;
+	ObjectX5->ObjectX7;
+	ObjectX7->ObjectX9;
+	ObjectRoot->ObjectY11;
+	ObjectY11->ObjectY13;
+	ObjectY13->ObjectY15;
+	ObjectY15->ObjectY17;
+	ObjectY17->ObjectY3;
+	{ rank = same; ObjectRoot; 		ObjectX2; 		ObjectX5; 		ObjectX7; 		ObjectX9}
+	ObjectY12[label="M" width = 1, style = filled, fillcolor = gray, group = 5];
+	ObjectY14[label="U" width = 1, style = filled, fillcolor = olivedrab2, group = 5];
+	ObjectY16[label="N" width = 1, style = filled, fillcolor = olivedrab2, group = 5];
+	ObjectY18[label="D" width = 1, style = filled, fillcolor = gray, group = 5];
+	ObjectY4[label="H" width = 1, style = filled, fillcolor = gold, group = 2];
+	ObjectY6[label="O" width = 1, style = filled, fillcolor = olivedrab2, group = 5];
+	ObjectY8[label="L" width = 1, style = filled, fillcolor = olivedrab2, group = 7];
+	ObjectY10[label="A" width = 1, style = filled, fillcolor = olivedrab2, group = 9];
+	{rank= same; 		ObjectY11;		ObjectY12}
+	{rank=same;		ObjectY13;		ObjectY14}
+	{rank=same;		ObjectY15;		ObjectY16}
+	{rank=same;		ObjectY17;		ObjectY18}
+	{rank=same;		ObjectY3;		ObjectY4;		ObjectY6;		ObjectY8;		ObjectY10}
 }

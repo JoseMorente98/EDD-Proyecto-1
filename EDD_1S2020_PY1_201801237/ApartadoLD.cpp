@@ -1,4 +1,6 @@
 #include "ApartadoLD.h"
+#include <iostream>
+#include <windows.h>
 
 int ApartadoLD::longitudDoble = 0;
 int ApartadoLD::longitudTriple = 0;
@@ -85,6 +87,49 @@ bool ApartadoLD::ValidarTriple(int posicionX, int posicionY)
 		temp = temp->getSiguiente();
 	}
 	return false;
+}
+
+void ApartadoLD::LimpiarDoble()
+{
+	this->primero = NULL;
+}
+
+void ApartadoLD::LimpiarTriple()
+{
+	this->primeroTriple = NULL;
+}
+
+void ApartadoLD::MostrarDoble()
+{
+	if (primero != NULL) {
+		Apartado* temp = primero;
+		while (temp != NULL)
+		{
+			std::cout << "Coordenadas: (" << temp->getPosicionX() << "," << temp->getPosicionY() << ")\n";
+			temp = temp->getSiguiente();
+		}
+	}
+	else {
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+		std::cout << "La lista se encuentra vacía. \n";
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
+	}
+}
+void ApartadoLD::MostrarTriple()
+{
+	if (primero != NULL) {
+		Apartado* temp = primeroTriple;
+		while (temp != NULL)
+		{
+			std::cout << "Coordenadas: (" << temp->getPosicionX() << "," << temp->getPosicionY() << ")\n";
+			temp = temp->getSiguiente();
+		}
+	}
+	else {
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+		std::cout << "La lista se encuentra vacía. \n";
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
+	}
 }
 
 int ApartadoLD::getMatriz() const
