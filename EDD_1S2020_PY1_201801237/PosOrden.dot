@@ -1,13 +1,7 @@
 digraph ArbolBinario {
 	rankdir=TB;
 	node[shape = note, fontcolor = black, style = filled, color = navajowhite];
-	graph[label = "Pos Order", labelloc = t, fontsize = 20];
-Object6[label = " Antonieta"];
-Object4[label = " David"];
-Object8[label = " Paola"];
-Object7[label = " Suselly"];
-Object5[label = " Rafael"];
-Object3[label = " Pedro"];
-Object2[label = " Pablo"];
-Object1[label = " Juan"];
+	graph[label = "Post Orden", labelloc = t, fontsize = 20];
+Object2[label = " B"];
+Object1[label = " A"];
 }

@@ -61,7 +61,7 @@ Juego::Juego()
 	fichasJuego[19] = new Ficha("Y", 4, 1);
 	fichasJuego[20] = new Ficha("Q", 5, 1);
 	fichasJuego[21] = new Ficha("J", 8, 1);
-	fichasJuego[22] = new Ficha("Ñ", 8, 1);
+	fichasJuego[22] = new Ficha("W", 8, 1);
 	fichasJuego[23] = new Ficha("X", 8, 1);
 	fichasJuego[24] = new Ficha("Z", 10, 1);
 }
@@ -308,8 +308,9 @@ void Juego::MenuReporte()
 				}
 				break;
 			case 9:
-				estado = false;
 				this->MenuPrincipal();
+
+				estado = false;
 				break;
 			default:
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
@@ -379,7 +380,7 @@ void Juego::CargaMasiva() {
 	fichasJuego[19] = new Ficha("Y", 4, 1);
 	fichasJuego[20] = new Ficha("Q", 5, 1);
 	fichasJuego[21] = new Ficha("J", 8, 1);
-	fichasJuego[22] = new Ficha("Ñ", 8, 1);
+	fichasJuego[22] = new Ficha("W", 8, 1);
 	fichasJuego[23] = new Ficha("X", 8, 1);
 	fichasJuego[24] = new Ficha("Z", 10, 1);
 
@@ -446,18 +447,11 @@ void Juego::IniciarJuego() {
 				if (jugador != NULL) {
 					jugador1 = jugador;
 					//CARGA DE FICHAS
-					/*for (size_t i = 0; i < 7; i++)
+					for (size_t i = 0; i < 7; i++)
 					{
 						Ficha *ficha = controladorFicha->Eliminar();
 						fichaJugador1.Agregar(ficha->getLetra(), ficha->getPunteo());
-					}*/
-					fichaJugador1.Agregar("H", 1);
-					fichaJugador1.Agregar("O", 1);
-					fichaJugador1.Agregar("L", 1);
-					fichaJugador1.Agregar("A", 1);
-					fichaJugador1.Agregar("M", 1);
-					fichaJugador1.Agregar("S", 1);
-					fichaJugador1.Agregar("S", 1);
+					}
 					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
 					cout << "__________________________________________________\n";
 					cout << "Jugador: " << jugador1->getNombre() << ", Puntos: " << ptsJugador1 << "\n";
@@ -490,18 +484,11 @@ void Juego::IniciarJuego() {
 					if (jugador1->getNombre() != jugador->getNombre()) {
 						jugador2 = jugador;						
 						//CARGA DE FICHAS
-						/*for (size_t i = 0; i < 7; i++)
+						for (size_t i = 0; i < 7; i++)
 						{
 							Ficha* ficha = controladorFicha->Eliminar();
 							fichaJugador2.Agregar(ficha->getLetra(), ficha->getPunteo());
-						}*/
-						fichaJugador2.Agregar("M", 1);
-						fichaJugador2.Agregar("U", 1);
-						fichaJugador2.Agregar("N", 1);
-						fichaJugador2.Agregar("D", 1);
-						fichaJugador2.Agregar("O", 1);
-						fichaJugador2.Agregar("E", 1);
-						fichaJugador2.Agregar("W", 1);
+						}
 						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13);
 						cout << "__________________________________________________\n";
 						cout << "Jugador: " << jugador2->getNombre() << ", Puntos: " << ptsJugador2 << "\n";
@@ -1147,7 +1134,7 @@ void Juego::IniciarJuego() {
 										estadoIntercambio = false;
 										estadoContinuar = false;
 										estadoRonda1 = false;
-										ronda = 2;
+										ronda = 1;
 										break;
 									default:
 										SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);

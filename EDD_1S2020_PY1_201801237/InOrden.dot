@@ -1,13 +1,7 @@
 digraph ArbolBinario {
 	rankdir=TB;
 	node[shape = note, fontcolor = black, style = filled, color = lightskyblue];
-	graph[label = "In Order", labelloc = t, fontsize = 20];
-Object6[label = " Antonieta"];
-Object4[label = " David"];
-Object1[label = " Juan"];
-Object2[label = " Pablo"];
-Object8[label = " Paola"];
-Object3[label = " Pedro"];
-Object5[label = " Rafael"];
-Object7[label = " Suselly"];
+	graph[label = "In Orden", labelloc = t, fontsize = 20];
+Object1[label = " A"];
+Object2[label = " B"];
 }

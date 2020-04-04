@@ -2,13 +2,7 @@ digraph ArbolBinario {
 	rankdir=TB;
 	node[shape = ellipse, fontcolor = black, style = filled, color = gainsboro];
 	graph[label = "Arbol Binario", labelloc = t, fontsize = 20];
-	Object1[ label ="Paola"];
-	Object2[ label ="Lux"];
-	Object3 [ label ="Pablo"];
-Object2->Object3
+	Object1[ label ="A"];
+	Object2 [ label ="B"];
 Object1->Object2
-	Object4[ label ="Rafa"];
-	Object5 [ label ="Suselly"];
-Object4->Object5
-Object1->Object4
 }

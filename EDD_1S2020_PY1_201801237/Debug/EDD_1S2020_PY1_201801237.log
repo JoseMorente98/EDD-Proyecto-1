@@ -1,13 +1,35 @@
-﻿  Juego.cpp
-C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(386,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(536,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(687,34): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(1042,34): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(782,13): warning C4101: 'validacion': variable local sin referencia
-C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(833,12): warning C4101: 'validacion': variable local sin referencia
-C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(1138,13): warning C4101: 'validacion': variable local sin referencia
-C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(1189,12): warning C4101: 'validacion': variable local sin referencia
-C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(1278,25): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(1308,25): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(1337,25): warning C4018: '<': no coinciden signed/unsigned
+﻿  Apartado.cpp
+  ApartadoLD.cpp
+  Diccionario.cpp
+  DiccionarioLDC.cpp
+C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\DiccionarioLDC.cpp(84,23): warning C4018: '<': no coinciden signed/unsigned
+  EDD_1S2020_PY1_201801237.cpp
+  Ficha.cpp
+  FichaCola.cpp
+  FichaJugador.cpp
+  FichaJugadorLD.cpp
+C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\FichaJugadorLD.cpp(144,23): warning C4018: '<': no coinciden signed/unsigned
+  Juego.cpp
+C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(387,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(523,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(674,34): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(1029,34): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(769,13): warning C4101: 'validacion': variable local sin referencia
+C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(820,12): warning C4101: 'validacion': variable local sin referencia
+C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(1125,13): warning C4101: 'validacion': variable local sin referencia
+C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(1176,12): warning C4101: 'validacion': variable local sin referencia
+C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(1265,25): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(1295,25): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\Juego.cpp(1324,25): warning C4018: '<': no coinciden signed/unsigned
+  Jugador.cpp
+  JugadorAB.cpp
+  LecturaJSON.cpp
+  Menu.cpp
+  TableroPuntuacionLS.cpp
+  Scrabble.cpp
+  ScrabbleMD.cpp
+  TableroPuntuacion.cpp
+  Validador.cpp
+  Generando código...
+C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\EDD_1S2020_PY1_201801237\FichaCola.cpp(45): warning C4715: 'FichaCola::Eliminar': no todas las rutas de acceso de control devuelven un valor
   EDD_1S2020_PY1_201801237.vcxproj -> C:\Users\josem\Documents\Universidad de San Carlos de Guatemala\USAC Semestre V\USAC Estructura de Datos\EDD_1S2020_PY1_201801237\Debug\EDD_1S2020_PY1_201801237.exe
